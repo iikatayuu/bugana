@@ -111,7 +111,7 @@ class ProfilePage extends React.Component<ProfilePageProps, ProfilePageState> {
       if (response.data.success) {
         const date = new Date();
         const timestamp = Math.floor(date.getTime() / 1000);
-        this.setState({ timestamp: timestamp });
+        this.setState({ timestamp });
       } else {
         this.setState({ message: response.data.message });
       }
@@ -132,7 +132,12 @@ class ProfilePage extends React.Component<ProfilePageProps, ProfilePageState> {
     try {
       const response = await axios.get(`${WEBAPI}/profile.php?token=${token}`);
       if (response.data.success) {
-        this.setState({ profile: response.data.profile });
+        const date = new Date();
+        const timestamp = Math.floor(date.getTime() / 1000);
+        this.setState({
+          profile: response.data.profile,
+          timestamp
+        });
       } else {
         this.setState({ error: response.data.message });
       }
