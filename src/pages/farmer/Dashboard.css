@@ -1,0 +1,40 @@
+
+.dashboard-title-bar {
+  font-family: 'Inter';
+  background-color: var(--ion-color-secondary);
+  color: var(--ion-color-secondary-contrast);
+  font-size: 18px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.dashboard-title-bar ion-select {
+  --padding-top: 0;
+  --padding-bottom: 0;
+  background-color: transparent;
+  border: 0;
+  font-size: 12px;
+  font-weight: 400;
+  text-align: center;
+}
+
+.dashboard-name {
+  font-family: 'Inter';
+  font-weight: 100;
+  font-style: italic;
+  font-size: 25px;
+}
+
+.dashboard-balance {
+  color: var(--ion-color-primary);
+  font-family: 'Inter';
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.dashboard-buttons {
+  width: 75%;
+}
+
+.dashboard-buttons a {
+  font-family: 'Inter';
+}

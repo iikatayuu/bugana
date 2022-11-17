@@ -1,0 +1,25 @@
+
+.form-login {
+  display: flex;
+  flex-direction: column;
+  margin: 36px;
+}
+
+.login-logo {
+  margin: auto;
+  margin-bottom: 24px;
+}
+
+.login-title {
+  font-family: 'Inika';
+  font-weight: 400;
+  font-size: 60px;
+  text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.login-subtitle {
+  font-family: 'Inter';
+  font-style: italic;
+  font-weight: 700;
+  font-size: 12px;
+}

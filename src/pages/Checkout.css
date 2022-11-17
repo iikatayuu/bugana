@@ -1,0 +1,92 @@
+
+.main-checkout {
+  margin-bottom: 52px;
+}
+
+.checkout-actions {
+  display: flex;
+  align-items: center;
+  padding-left: 24px;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--ion-color-secondary);
+  color: var(--ion-color-secondary-contrast);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.checkout-confirm {
+  font-size: 14px;
+  padding: 12px 24px;
+}
+
+.checkout-container {
+  display: flex;
+  margin-top: 12px;
+  padding: 16px 8px 48px 8px;
+  background-color: var(--ion-color-tertiary);
+}
+
+.checkout-text {
+  font-size: 12px;
+  font-weight: 700;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.checkout-address-edit {
+  color: var(--ion-color-primary);
+  font-weight: 700;
+  font-size: 12px;
+  text-decoration: none;
+}
+
+.checkout-products-container {
+  background-color: var(--ion-color-tertiary);
+  color: var(--ion-color-tertiary-contrast);
+}
+
+.checkout-seller {
+  padding: 8px 8px 8px 32px;
+  background-color: var(--ion-color-secondary);
+  color: var(--ion-color-secondary-contrast);
+  font-weight: 400;
+  font-size: 14px;
+}
+
+.checkout-item {
+  display: flex;
+  padding: 12px 12px 24px 12px;
+}
+
+.checkout-item-img {
+  box-shadow: 0 4px 4px rgba(0, 0, 0, .25);
+}
+
+.checkout-btn {
+  font-family: 'Inter' !important;
+  font-size: 14px !important;
+  font-weight: 700;
+  padding: 12px 24px !important;
+}
+
+.payment-option {
+  margin-right: 16px;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+#modal-confirm {
+  --height: 50%;
+}
+
+.modal-confirm-content {
+  font-family: 'Inter';
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.modal-checkout {
+  line-height: 1.5;
+  text-align: center;
+}

@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">BUGANA</string>
+    <string name="title_activity_main">BUGANA</string>
+    <string name="package_name">tk.bugana.bugana</string>
+    <string name="custom_url_scheme">tk.bugana.bugana</string>
+</resources>

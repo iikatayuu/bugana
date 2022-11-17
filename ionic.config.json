@@ -1,0 +1,8 @@
+{
+  "name": "bugana",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react",
+  "id": "51425953"
+}

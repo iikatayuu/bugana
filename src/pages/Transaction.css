@@ -1,0 +1,24 @@
+
+.transaction {
+  font-size: 12px;
+}
+
+.transaction-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.picked-up,
+.delivered {
+  align-self: flex-end;
+  padding: 8px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.picked-up { background-color: #fff; }
+
+.delivered {
+  background-color: var(--ion-color-secondary);
+  color: #fff;
+}

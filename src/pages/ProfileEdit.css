@@ -1,0 +1,16 @@
+
+.edit-name {
+  flex: 1;
+}
+
+.btn-save {
+  border: none;
+  background-color: transparent;
+  font-weight: 700;
+  font-size: 14px;
+  color: #aea8a8;
+}
+
+.edit-input-container {
+  padding: 24px 0;
+}

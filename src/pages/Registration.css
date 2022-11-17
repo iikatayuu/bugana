@@ -1,0 +1,12 @@
+
+.form-register {
+  display: flex;
+  flex-direction: column;
+  margin: 36px;
+}
+
+.register-title {
+  font-family: 'Inika';
+  font-weight: 400;
+  font-size: 40px;
+}

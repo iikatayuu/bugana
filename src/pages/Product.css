@@ -1,0 +1,75 @@
+
+.product-photo {
+  margin: 8px;
+  padding: 0;
+  text-align: center;
+  background-color: var(--ion-color-tertiary);
+}
+
+.product-photo img {
+  vertical-align: middle;
+  border-style: none;
+}
+
+.product-title {
+  font-family: 'Inika';
+  font-size: 22px;
+  margin-bottom: 2px;
+}
+
+.product-price {
+  margin: 0 0 2px 0;
+  font-family: 'Inika';
+  font-size: 20px;
+  color: var(--ion-color-primary);
+}
+
+.product-quantity {
+  margin: 0 0 4px 0;
+  color: #aea8a8;
+}
+
+.product-farmer-name {
+  font-family: 'Inika';
+  font-size: 16px;
+}
+
+.product-farmer-address {
+  font-family: 'Inter';
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.product-stats-name {
+  font-size: 10px;
+  color: #aea8a8;
+}
+
+.product-stats-value {
+  margin-bottom: 4px;
+  color: var(--ion-color-primary);
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.product-cart {
+  padding: 12px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  box-shadow: 4px 4px 4px 10px rgba(0, 0, 0, .25);
+}
+
+.product-cart-quantity button,
+.product-cart-quantity div {
+  border: 1px solid #000;
+  min-width: 26px;
+  height: 26px;
+  font-size: 22px;
+}
+
+.product-actions {
+  position: absolute;
+  bottom: 12px;
+  left: 0;
+  right: 0;
+}
