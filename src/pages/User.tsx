@@ -2,13 +2,31 @@
 import React from 'react';
 import { Link, Redirect } from 'react-router-dom';
 
-import { TokenPayload } from '../types';
+import { RouterProps, TokenPayload } from '../types';
 import { WEBAPI } from '../variables';
 import Dashboard from '../components/Dashboard';
 import { ReactComponent as RightIcon } from '../assets/right.svg';
 import './User.css';
 
-class UserPage extends React.Component {
+interface UserPageState {
+  timestamp: number;
+}
+
+class UserPage extends React.Component<RouterProps, UserPageState> {
+  constructor (props: RouterProps) {
+    super(props);
+
+    this.state = {
+      timestamp: 0
+    };
+  }
+
+  componentDidMount () {
+    const date = new Date();
+    const timestamp = Math.floor(date.getTime() / 1000);
+    this.setState({ timestamp });
+  }
+
   render () {
     const payloadItem = localStorage.getItem('payload');
     if (payloadItem === null) return <Redirect to="/" />;
@@ -22,7 +40,7 @@ class UserPage extends React.Component {
 
         <main>
           <div className="user-container">
-            <img src={WEBAPI + '/profileimg.php?id=' + payload.userid } alt={ payload.username + ' Profile Picture' } width={160} />
+            <img src={WEBAPI + '/profileimg.php?id=' + payload.userid + '&t=' + this.state.timestamp } alt={ payload.username + ' Profile Picture' } width={160} />
             <h5>{ payload.name }</h5>
           </div>
 
