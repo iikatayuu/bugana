@@ -53,7 +53,7 @@ class RegistrationPage extends React.Component<RouterProps, RegistrationPageStat
   render () {
     return (
       <IonPage>
-        <IonContent fullscreen style={{ '--background': '#36454f' }}>
+        <IonContent fullscreen style={{ '--background': '#097969' }}>
           <form action={ WEBAPI + '/register.php' } method="post" className="form-register" onSubmit={this.register}>
             <div className="card">
               <h6 className="register-title mb-2">Sign-up</h6>
@@ -65,9 +65,9 @@ class RegistrationPage extends React.Component<RouterProps, RegistrationPageStat
 
               <div className="form-group mb-1">
                 <IonSelect name="gender" placeholder="Select gender" interface="popover" className="form-control">
-                  <IonSelectOption value="male">Male</IonSelectOption>
-                  <IonSelectOption value="female">Female</IonSelectOption>
-                  <IonSelectOption value="others">Others</IonSelectOption>
+                  <IonSelectOption>Male</IonSelectOption>
+                  <IonSelectOption>Female</IonSelectOption>
+                  <IonSelectOption>Others</IonSelectOption>
                 </IonSelect>
               </div>
 
@@ -93,15 +93,40 @@ class RegistrationPage extends React.Component<RouterProps, RegistrationPageStat
 
               <p className="text-md text-bold mb-1">Address</p>
               <div className="form-group mb-1">
-                <input type="text" name="address-street" placeholder="Purok/Street" className="form-control" required />
+                <input type="text" name="address-street" placeholder="Street" className="form-control" required />
               </div>
 
               <div className="form-group mb-1">
-                <input type="text" name="address-brgy" placeholder="Barangay" className="form-control" required />
+                <input type="text" name="address-purok" placeholder="Purok" className="form-control" required />
               </div>
 
               <div className="form-group mb-1">
-                <input type="text" name="address-city" placeholder="City/Municipality" className="form-control" required />
+                <IonSelect name="address-brgy" placeholder="Select barangay" interface="popover" className="form-control">
+                  <IonSelectOption>Abuanan</IonSelectOption>
+                  <IonSelectOption>Alianza</IonSelectOption>
+                  <IonSelectOption>Atipuluan</IonSelectOption>
+                  <IonSelectOption>Bacong-Montilla</IonSelectOption>
+                  <IonSelectOption>Bagroy</IonSelectOption>
+                  <IonSelectOption>Balingasag</IonSelectOption>
+                  <IonSelectOption>Binubuhan</IonSelectOption>
+                  <IonSelectOption>Busay</IonSelectOption>
+                  <IonSelectOption>Calumangan</IonSelectOption>
+                  <IonSelectOption>Caridad</IonSelectOption>
+                  <IonSelectOption>Don Jorge L. Araneta</IonSelectOption>
+                  <IonSelectOption>Dulao</IonSelectOption>
+                  <IonSelectOption>Ilijan</IonSelectOption>
+                  <IonSelectOption>Lag-Asan</IonSelectOption>
+                  <IonSelectOption>Ma-ao</IonSelectOption>
+                  <IonSelectOption>Mailum</IonSelectOption>
+                  <IonSelectOption>Malingin</IonSelectOption>
+                  <IonSelectOption>Napoles</IonSelectOption>
+                  <IonSelectOption>Pacol</IonSelectOption>
+                  <IonSelectOption>Poblacion</IonSelectOption>
+                  <IonSelectOption>Sagasa</IonSelectOption>
+                  <IonSelectOption>Tabunan</IonSelectOption>
+                  <IonSelectOption>Taloc</IonSelectOption>
+                  <IonSelectOption>Sampinit</IonSelectOption>
+                </IonSelect>
               </div>
 
               {

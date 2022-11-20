@@ -8,6 +8,10 @@
   flex-direction: column;
 }
 
+.transaction-img {
+  width: 147px;
+}
+
 .picked-up,
 .delivered {
   align-self: flex-end;

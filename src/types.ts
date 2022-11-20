@@ -21,8 +21,8 @@ export interface Profile {
   birthday: string;
   type: UserType;
   addressstreet: string;
+  addresspurok: string;
   addressbrgy: string;
-  addresscity: string;
 }
 
 export interface Farmer extends Profile {
@@ -84,8 +84,8 @@ export interface Transaction {
     name: string;
     username: string;
     addressstreet: string;
+    addresspurok: string;
     addressbrgy: string;
-    addresscity: string;
   };
   product: {
     id: string;
@@ -97,6 +97,7 @@ export interface Transaction {
   date: string;
   amount: string;
   paymentoption: string;
+  status: string;
 }
 
 export interface RouterProps {

@@ -182,9 +182,9 @@ class ProfilePage extends React.Component<ProfilePageProps, ProfilePageState> {
           </div>
 
           <div className="profile-group mt-2 mb-5">
-            <Link to={'/profile/edit?name=Address%20City&key=addresscity&value=' + encodeURIComponent(profile.addresscity)} className="profile-data">CITY/MUNICIPALITY: { profile.addresscity }</Link>
             <Link to={'/profile/edit?name=Address%20Barangay&key=addressbrgy&value=' + encodeURIComponent(profile.addressbrgy)} className="profile-data">BARANGAY: { profile.addressbrgy }</Link>
-            <Link to={'/profile/edit?name=Purok%2FStreet&key=addressstreet&value=' + encodeURIComponent(profile.addressstreet)} className="profile-data">PUROK/STREET: { profile.addressstreet }</Link>
+            <Link to={'/profile/edit?name=Address%20Purok&key=addresspurok&value=' + encodeURIComponent(profile.addresspurok)} className="profile-data">PUROK: { profile.addresspurok }</Link>
+            <Link to={'/profile/edit?name=Purok%2FStreet&key=addressstreet&value=' + encodeURIComponent(profile.addressstreet)} className="profile-data">STREET: { profile.addressstreet }</Link>
           </div>
 
           <div className="profile-group mt-2">

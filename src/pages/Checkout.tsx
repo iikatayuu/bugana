@@ -112,7 +112,7 @@ class CheckoutPage extends React.Component<RouterProps, CheckoutPageState> {
     const items = this.state.items;
     const profile = this.state.profile;
     const products: React.ReactNode[] = [];
-    let total = 0;
+    let total = this.state.payment === 'delivery' ? 50 : 0;
 
     if (items.length > 0 && profile !== null) {
       const sellers: string[] = [];
@@ -176,7 +176,7 @@ class CheckoutPage extends React.Component<RouterProps, CheckoutPageState> {
                 <div className="checkout-container">
                   <AddressIcon className="mr-2" />
                   <div className="flex-1">
-                    <div className="text-bold">{ profile.addressstreet }, { profile.addressbrgy }, { profile.addresscity }</div>
+                    <div className="text-bold">{ profile.addressstreet }, { profile.addresspurok }, { profile.addressbrgy }</div>
                     <div className="checkout-text text-bold mt-1">
                       <div className="mb-1">Name: { profile.name }</div>
                       <div>Mobile: { profile.mobile }</div>
@@ -217,13 +217,15 @@ class CheckoutPage extends React.Component<RouterProps, CheckoutPageState> {
                         <div className="flex-1">Product Total:</div>
                         <div>{ total.toFixed(2) }</div>
                       </div>
-                      <div className="d-flex mt-2 mr-3">
-                        <div className="flex-1">Shipping Subtotal:</div>
-                        <div>50.00</div>
-                      </div>
+                      { this.state.payment === 'delivery' &&
+                        <div className="d-flex mt-2 mr-3">
+                          <div className="flex-1">Shipping Subtotal:</div>
+                          <div>50.00</div>
+                        </div>
+                      }
                       <div className="d-flex text-lg mt-2 mr-3">
                         <div className="flex-1">Total Payment:</div>
-                        <div className="text-primary">{ (total + 50).toFixed(2) }</div>
+                        <div className="text-primary">{ total.toFixed(2) }</div>
                       </div>
                     </div>
                   </div>
@@ -233,7 +235,7 @@ class CheckoutPage extends React.Component<RouterProps, CheckoutPageState> {
           </main>
 
           <footer className="checkout-actions">
-            <div className="flex-1">Total Payment: <span className="text-primary text-bold ml-2">{ (total + 50).toFixed(2) }</span></div>
+            <div className="flex-1">Total Payment: <span className="text-primary text-bold ml-2">{ total.toFixed(2) }</span></div>
             <button type="button" className="checkout-btn btn btn-primary" onClick={this.openModal}>Confirm</button>
           </footer>
 

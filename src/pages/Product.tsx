@@ -242,7 +242,7 @@ class ProductPage extends React.Component<RouterProps, ProductPageState> {
 
                     <div className="ml-3">
                       <div className="product-farmer-name">{ farmer.name }</div>
-                      <strong className="product-farmer-address">{ farmer.addressstreet + ', ' + farmer.addressbrgy + ', ' + farmer.addresscity }</strong>
+                      <strong className="product-farmer-address">{ farmer.addressstreet + ', ' + farmer.addresspurok + ', ' + farmer.addressbrgy }</strong>
                     </div>
                   </div>
 

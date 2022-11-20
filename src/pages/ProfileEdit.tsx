@@ -100,6 +100,37 @@ class ProfileEditPage extends React.Component<RouterProps, ProfileEditPageState>
       );
     }
 
+    if (this.key === 'addressbrgy') {
+      input = (
+        <IonSelect value={this.state.value} interface="popover" onIonChange={this.changeSelectValue} className="form-control py-3">
+          <IonSelectOption>Abuanan</IonSelectOption>
+          <IonSelectOption>Alianza</IonSelectOption>
+          <IonSelectOption>Atipuluan</IonSelectOption>
+          <IonSelectOption>Bacong-Montilla</IonSelectOption>
+          <IonSelectOption>Bagroy</IonSelectOption>
+          <IonSelectOption>Balingasag</IonSelectOption>
+          <IonSelectOption>Binubuhan</IonSelectOption>
+          <IonSelectOption>Busay</IonSelectOption>
+          <IonSelectOption>Calumangan</IonSelectOption>
+          <IonSelectOption>Caridad</IonSelectOption>
+          <IonSelectOption>Don Jorge L. Araneta</IonSelectOption>
+          <IonSelectOption>Dulao</IonSelectOption>
+          <IonSelectOption>Ilijan</IonSelectOption>
+          <IonSelectOption>Lag-Asan</IonSelectOption>
+          <IonSelectOption>Ma-ao</IonSelectOption>
+          <IonSelectOption>Mailum</IonSelectOption>
+          <IonSelectOption>Malingin</IonSelectOption>
+          <IonSelectOption>Napoles</IonSelectOption>
+          <IonSelectOption>Pacol</IonSelectOption>
+          <IonSelectOption>Poblacion</IonSelectOption>
+          <IonSelectOption>Sagasa</IonSelectOption>
+          <IonSelectOption>Tabunan</IonSelectOption>
+          <IonSelectOption>Taloc</IonSelectOption>
+          <IonSelectOption>Sampinit</IonSelectOption>
+        </IonSelect>
+      );
+    }
+
     return (
       <IonPage>
         <IonContent fullscreen>
