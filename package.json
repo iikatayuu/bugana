@@ -68,7 +68,6 @@
     ]
   },
   "devDependencies": {
-    "@capacitor/cli": "4.4.0",
-    "@types/jquery": "^3.5.14"
+    "@capacitor/cli": "4.4.0"
   }
 }
