@@ -139,7 +139,9 @@ class RegistrationPage extends React.Component<RouterProps, RegistrationPageStat
                 <p className="text-center text-sm text-danger">{ this.state.message }</p>
               }
 
-              <button type="submit" className="mt-2 btn btn-block btn-primary" disabled={this.state.registering}>REGISTER</button>
+              <button type="submit" className="mt-2 btn btn-block btn-primary" disabled={this.state.registering}>
+                { this.state.registering ? 'REGISTERING...' : 'REGISTER' }
+              </button>
               <div className="mt-1 text-sm text-center">Already have an account? <Link to="/">Sign in here</Link></div>
             </div>
           </form>
