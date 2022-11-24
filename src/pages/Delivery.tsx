@@ -10,6 +10,7 @@ import { ReactComponent as LoaderIcon } from '../assets/loader.svg';
 import './Transaction.css';
 
 interface DeliveryPageState {
+  shipping: number;
   transactions: Transaction[][];
   loading: boolean;
   error: string;
@@ -20,6 +21,7 @@ class DeliveryPage extends React.Component<RouterProps, DeliveryPageState> {
     super(props);
 
     this.state = {
+      shipping: 0,
       transactions: [],
       loading: true,
       error: ''
@@ -62,6 +64,11 @@ class DeliveryPage extends React.Component<RouterProps, DeliveryPageState> {
     try {
       const response = await axios.get(`${WEBAPI}/transaction/list.php?type=delivery&token=${token}`);
       if (response.data.success) {
+        const profileRes = await axios.get(`${WEBAPI}/profile.php?token=${token}`);
+        const profile = profileRes.data.profile;
+        const shippingFeeRes = await axios.get(`${WEBAPI}/shipping.php?brgy=${profile.addressbrgy}`);
+        const shipping = shippingFeeRes.data.fee;
+
         const transactions: Transaction[] = response.data.transactions;
         const grouped: Transaction[][] = [];
         let index = -1;
@@ -78,7 +85,7 @@ class DeliveryPage extends React.Component<RouterProps, DeliveryPageState> {
           }
         }
 
-        this.setState({ transactions: grouped });
+        this.setState({ transactions: grouped, shipping });
       } else {
         this.setState({ error: response.data.message });
       }
@@ -97,7 +104,7 @@ class DeliveryPage extends React.Component<RouterProps, DeliveryPageState> {
       const total = items.reduce((prev, curr) => {
         prev += parseFloat(curr.amount);
         return prev;
-      }, 50);
+      }, this.state.shipping);
 
       transactions.push(
         <div className="transaction card card-tertiary card-rect m-2 text-bold" key={i}>
@@ -137,8 +144,8 @@ class DeliveryPage extends React.Component<RouterProps, DeliveryPageState> {
           <div className="d-flex">
             <div className="transaction-img"></div>
             <div>
-              <div className="mb-1">Shipping Fee: 50.00</div>
-              <div className="mb-1">Total Amount: { total }</div>
+              <div className="mb-1">Shipping Fee: { this.state.shipping.toFixed(2) }</div>
+              <div className="mb-1">Total Amount: { total.toFixed(2) }</div>
               <button type="button" className="delivered" onClick={this.receive(i)}>{ items[0].status === 'success' ? 'Order Received' : 'To Deliver' }</button>
             </div>
           </div>

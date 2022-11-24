@@ -16,6 +16,7 @@ import './Checkout.css';
 
 interface CheckoutPageState {
   profile: Profile | null;
+  shipping: number;
   items: CartItem[];
   payment: string;
   confirm: boolean;
@@ -30,6 +31,7 @@ class CheckoutPage extends React.Component<RouterProps, CheckoutPageState> {
 
     this.state = {
       profile: null,
+      shipping: 0,
       items: [] as CartItem[],
       payment: 'pickup',
       confirm: false,
@@ -93,7 +95,10 @@ class CheckoutPage extends React.Component<RouterProps, CheckoutPageState> {
     try {
       const response = await axios.get(`${WEBAPI}/profile.php?token=${token}`);
       if (response.data.success) {
-        this.setState({ profile: response.data.profile });
+        const profile = response.data.profile;
+        const shippingFeeRes = await axios.get(`${WEBAPI}/shipping.php?brgy=${profile.addressbrgy}`);
+
+        this.setState({ profile, shipping: shippingFeeRes.data.fee });
       } else {
         this.setState({ error: response.data.message });
       }
@@ -112,7 +117,7 @@ class CheckoutPage extends React.Component<RouterProps, CheckoutPageState> {
     const items = this.state.items;
     const profile = this.state.profile;
     const products: React.ReactNode[] = [];
-    let total = this.state.payment === 'delivery' ? 50 : 0;
+    let total = this.state.payment === 'delivery' ? this.state.shipping : 0;
 
     if (items.length > 0 && profile !== null) {
       const sellers: string[] = [];
@@ -220,7 +225,7 @@ class CheckoutPage extends React.Component<RouterProps, CheckoutPageState> {
                       { this.state.payment === 'delivery' &&
                         <div className="d-flex mt-2 mr-3">
                           <div className="flex-1">Shipping Subtotal:</div>
-                          <div>50.00</div>
+                          <div>{ this.state.shipping.toFixed(2) }</div>
                         </div>
                       }
                       <div className="d-flex text-lg mt-2 mr-3">
