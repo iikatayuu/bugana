@@ -124,7 +124,7 @@ class CheckoutPage extends React.Component<RouterProps, CheckoutPageState> {
         const totalPrice = parseInt(item.quantity) * price;
         let seller: React.ReactNode = '';
         if (!sellers.includes(user.id)) {
-          seller = <div className="checkout-seller mb-1">{ user.name }</div>
+          seller = <div className="checkout-seller bg-secondary-old mb-1">{ user.name }</div>
           sellers.push(user.id);
         }
 
@@ -149,7 +149,7 @@ class CheckoutPage extends React.Component<RouterProps, CheckoutPageState> {
     return (
       <IonPage className={this.state.confirm ? 'blur' : ''}>
         <IonContent fullscreen>
-          <header className="page-header">
+          <header className="page-header bg-primary-old">
             <button type="button" className="btn-nav" onClick={() => { this.props.history.goBack(); }}>
               <LeftIcon width={20} height={20} />
             </button>
@@ -225,7 +225,7 @@ class CheckoutPage extends React.Component<RouterProps, CheckoutPageState> {
                       }
                       <div className="d-flex text-lg mt-2 mr-3">
                         <div className="flex-1">Total Payment:</div>
-                        <div className="text-primary">{ total.toFixed(2) }</div>
+                        <div className="text-primary-old">{ total.toFixed(2) }</div>
                       </div>
                     </div>
                   </div>
@@ -235,15 +235,15 @@ class CheckoutPage extends React.Component<RouterProps, CheckoutPageState> {
           </main>
 
           <footer className="checkout-actions">
-            <div className="flex-1">Total Payment: <span className="text-primary text-bold ml-2">{ total.toFixed(2) }</span></div>
-            <button type="button" className="checkout-btn btn btn-primary" onClick={this.openModal}>Confirm</button>
+            <div className="flex-1">Total Payment: <span className="text-primary-old text-bold ml-2">{ total.toFixed(2) }</span></div>
+            <button type="button" className="checkout-btn btn btn-primary-old" onClick={this.openModal}>Confirm</button>
           </footer>
 
           <IonModal id="modal-confirm" isOpen={this.state.confirm} onDidDismiss={() => this.setState({ confirm: false })}>
             <IonContent>
               <div className="modal-confirm-content m-3">
                 <div className="text-center text-bold mb-1">CONFIRM CHECKOUT</div>
-                <div className="modal-checkout card card-rect card-primary">
+                <div className="modal-checkout card card-rect card-primary-old">
                   Upon confirming this purchase, you are agreeing to the following terms:
                   <ol>
                     <li>1. Delivery hours is 12NN and 6PM</li>
@@ -257,8 +257,8 @@ class CheckoutPage extends React.Component<RouterProps, CheckoutPageState> {
                     </li>
                   </ol>
                 </div>
-                <div className="text-danger">{ this.state.error }</div>
-                <button type="button" className="btn btn-secondary btn-block btn-round w-50 mt-2" onClick={this.checkout} disabled={this.state.checkingOut}>
+                <div className="text-danger mt-2">{ this.state.error }</div>
+                <button type="button" className="btn btn-secondary-old btn-block btn-round w-50 mt-2" onClick={this.checkout} disabled={this.state.checkingOut}>
                   { this.state.checkingOut ? 'Checking Out...' : 'Confirm' }
                 </button>
               </div>

@@ -200,7 +200,7 @@ class ProductPage extends React.Component<RouterProps, ProductPageState> {
     return (
       <IonPage>
         <IonContent fullscreen>
-          <header className="page-header">
+          <header className="page-header bg-primary-old">
             <button type="button" className="btn-nav" onClick={() => { this.props.history.goBack(); }}>
               <LeftIcon width={20} height={20} />
             </button>
@@ -260,8 +260,8 @@ class ProductPage extends React.Component<RouterProps, ProductPageState> {
                 </div>
 
                 <div className="product-actions d-flex justify-space-around mt-3">
-                  <button type="button" className="btn btn-secondary btn-lg btn-round" onClick={this.open('cart')}>Add to Cart</button>
-                  <button type="button" className="btn btn-secondary btn-lg btn-round" onClick={this.open('checkout')}>Checkout</button>
+                  <button type="button" className="btn btn-secondary-old btn-lg btn-round" onClick={this.open('cart')}>Add to Cart</button>
+                  <button type="button" className="btn btn-secondary-old btn-lg btn-round" onClick={this.open('checkout')}>Checkout</button>
                 </div>
               </div>
             }
@@ -272,7 +272,7 @@ class ProductPage extends React.Component<RouterProps, ProductPageState> {
             <form action={WEBAPI + '/cart/add.php'} method="post" className="product-cart text-center" onSubmit={this.addToCart}>
               <div className="popup-title mb-3">Unit</div>
               <div className="d-flex justify-space-between align-items-center">
-                <button type="button" className="btn btn-secondary">kilogram</button>
+                <button type="button" className="btn btn-secondary-old">kilogram</button>
                 <div className="product-cart-quantity d-flex align-items-center">
                   <button type="button" onClick={this.updateQuantity('cart', '-')}>-</button>
                   <div className="text-center">{ this.state.cartQuantity }</div>
@@ -280,7 +280,7 @@ class ProductPage extends React.Component<RouterProps, ProductPageState> {
                 </div>
               </div>
 
-              <button type="submit" className="btn btn-primary btn-xl btn-round text-align mt-4" disabled={this.state.addingCart}>
+              <button type="submit" className="btn btn-primary-old btn-xl btn-round text-align mt-4" disabled={this.state.addingCart}>
                 { this.state.addingCart ? 'Adding to cart...' : 'Add to Cart' }
               </button>
             </form>
@@ -290,7 +290,7 @@ class ProductPage extends React.Component<RouterProps, ProductPageState> {
             <form action="/checkout" method="post" className="product-cart text-center" onSubmit={this.checkout}>
               <div className="popup-title mb-3">Unit</div>
               <div className="d-flex justify-space-between align-items-center">
-                <button type="button" className="btn btn-secondary">kilogram</button>
+                <button type="button" className="btn btn-secondary-old">kilogram</button>
                 <div className="product-cart-quantity d-flex align-items-center">
                   <button type="button" onClick={this.updateQuantity('checkout', '-')}>-</button>
                   <div className="text-center">{ this.state.checkoutQuantity }</div>
@@ -298,7 +298,7 @@ class ProductPage extends React.Component<RouterProps, ProductPageState> {
                 </div>
               </div>
 
-              <button type="submit" className="btn btn-primary btn-xl btn-round text-align mt-4" disabled={this.state.checkingOut}>
+              <button type="submit" className="btn btn-primary-old btn-xl btn-round text-align mt-4" disabled={this.state.checkingOut}>
                 { this.state.checkingOut ? 'Checking out...' : 'Checkout' }
               </button>
             </form>

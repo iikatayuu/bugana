@@ -4,7 +4,7 @@ import { IonPage, IonContent } from '@ionic/react';
 import axios from 'axios';
 
 import { RouterProps } from '../../types';
-import { WEBAPI } from '../../variables';
+import { WEBAPI, MONTHS } from '../../variables';
 import { ReactComponent as LeftIcon } from '../../assets/left.svg';
 import './Dashboard.css';
 
@@ -12,6 +12,10 @@ type MonthDisplay = "current" | "previous";
 
 interface HistoryRecordPageState {
   display: MonthDisplay;
+  currentMonth: string;
+  currentYear: string;
+  lastMonth: string;
+  lastYear: string;
   currentMonthIncome: number;
   lastMonthIncome: number;
   loading: boolean;
@@ -22,8 +26,27 @@ class HistoryRecordPage extends React.Component<RouterProps, HistoryRecordPageSt
   constructor (props: RouterProps) {
     super(props);
 
+    const date = new Date();
+    const currentMonthIndex = date.getMonth();
+    const currentMonth = MONTHS[currentMonthIndex];
+    const currentYear = date.getFullYear();
+    let lastMonth = '';
+    let lastYear = 0;
+
+    if (currentMonthIndex - 1 > -1) {
+      lastMonth = MONTHS[currentMonthIndex - 1];
+      lastYear = currentYear;
+    } else {
+      lastMonth = MONTHS[11];
+      lastYear = currentYear - 1;
+    }
+
     this.state = {
       display: 'current',
+      currentMonth,
+      currentYear: currentYear.toString(),
+      lastMonth,
+      lastYear: lastYear.toString(),
       currentMonthIncome: 0,
       lastMonthIncome: 0,
       loading: true,
@@ -67,6 +90,10 @@ class HistoryRecordPage extends React.Component<RouterProps, HistoryRecordPageSt
   }
 
   render () {
+    const dayMonth = this.state.display === 'current'
+      ? `${this.state.currentMonth} ${this.state.currentYear}`
+      : `${this.state.lastMonth} ${this.state.lastYear}`;
+
     return (
       <IonPage>
         <IonContent fullscreen>
@@ -87,11 +114,17 @@ class HistoryRecordPage extends React.Component<RouterProps, HistoryRecordPageSt
               <button type="button" className={'btn btn-primary btn-round btn-xs btn-shadow text-dark text-bold ml-auto' + (this.state.display === 'previous' ? '' : ' d-none')} onClick={this.toggleDisplay}>Current Month</button>
             </div>
 
-            <div className="card card-tertiary card-rect text-center m-3">
-              <h5 className="text-lg text-bold mt-2 mb-3">MONTHLY GROSS COMPUTATION</h5>
-              <div className="d-flex justify-space-around mb-4">
+            <div className="card card-background card-rect m-3">
+              <h5 className="text-lg text-bold my-2 text-center">{ dayMonth }</h5>
+              <h5 className="text-lg text-bold mb-3 text-center">MONTHLY GROSS COMPUTATION</h5>
+              <div className="d-flex justify-space-around">
                 <span>Sales Income:</span>
                 <span className="text-bold">{ this.state.display === 'current' ? this.state.currentMonthIncome : this.state.lastMonthIncome }</span>
+              </div>
+              <h5 className="text-md text-bold my-2 ml-3">Unsold</h5>
+              <div className="d-flex justify-space-around mb-4">
+                <span>Perished Products:</span>
+                <span className="text-bold">0</span>
               </div>
               <div className="d-flex justify-space-around align-items-center text-bold text-dark">
                 <span>TOTAL INCOME:</span>

@@ -21,7 +21,7 @@
   margin: 0 0 2px 0;
   font-family: 'Inika';
   font-size: 20px;
-  color: var(--ion-color-primary);
+  color: var(--ion-color-primary-old);
 }
 
 .product-quantity {
@@ -47,7 +47,7 @@
 
 .product-stats-value {
   margin-bottom: 4px;
-  color: var(--ion-color-primary);
+  color: var(--ion-color-primary-old);
   font-size: 20px;
   font-weight: 500;
 }
@@ -68,8 +68,5 @@
 }
 
 .product-actions {
-  position: absolute;
-  bottom: 12px;
-  left: 0;
-  right: 0;
+  margin-bottom: 12px;
 }

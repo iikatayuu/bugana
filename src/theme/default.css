@@ -83,6 +83,12 @@ a { color: #000; }
   color: var(--ion-color-primary-contrast);
 }
 
+.card-primary-old {
+  border: 1px solid var(--ion-color-primary-old-border);
+  background-color: var(--ion-color-primary-old);
+  color: var(--ion-color-primary-old-contrast);
+}
+
 .card-secondary {
   border: 1px solid var(--ion-color-secondary-border);
   background-color: var(--ion-color-secondary);
@@ -93,6 +99,12 @@ a { color: #000; }
   border: 1px solid var(--ion-color-tertiary-border);
   background-color: var(--ion-color-tertiary);
   color: var(--ion-color-tertiary-contrast);
+}
+
+.card-background {
+  border: 0;
+  background-color: var(--ion-color-background);
+  color: var(--ion-color-background-contrast);
 }
 
 .card-rect {
@@ -153,6 +165,21 @@ ion-select.form-control {
   --placeholder-opacity: 0.60;
 }
 
+.bg-primary-old {
+  background-color: var(--ion-color-primary-old);
+  color: var(--ion-color-primary-old-contrast);
+}
+
+.bg-secondary-old {
+  background-color: var(--ion-color-secondary-old);
+  color: var(--ion-color-secondary-old-contrast);
+}
+
+.bg-tertiary {
+  background-color: var(--ion-color-tertiary);
+  color: var(--ion-color-tertiary-contrast);
+}
+
 .btn {
   padding: 12px;
   border: 0;
@@ -180,6 +207,14 @@ ion-select.form-control {
 .btn-primary:hover { background-color: var(--ion-color-primary-shade); }
 .btn-primary:disabled { background-color: var(--ion-color-primary-tint); }
 
+.btn-primary-old {
+  background-color: var(--ion-color-primary-old);
+  color: var(--ion-color-primary-old-contrast);
+}
+
+.btn-primary-old:hover { background-color: var(--ion-color-primary-old-shade); }
+.btn-primary-old:disabled { background-color: var(--ion-color-primary-old-tint); }
+
 .btn-secondary {
   background-color: var(--ion-color-secondary);
   color: var(--ion-color-secondary-contrast);
@@ -187,6 +222,14 @@ ion-select.form-control {
 
 .btn-secondary:hover { background-color: var(--ion-color-secondary-shade); }
 .btn-secondary:disabled { background-color: var(--ion-color-secondary-tint); }
+
+.btn-secondary-old {
+  background-color: var(--ion-color-secondary-old);
+  color: var(--ion-color-secondary-old-contrast);
+}
+
+.btn-secondary-old:hover { background-color: var(--ion-color-secondary-old-shade); }
+.btn-secondary-old:disabled { background-color: var(--ion-color-secondary-old-tint); }
 
 .btn-tertiary {
   background-color: var(--ion-color-tertiary);
@@ -291,16 +334,19 @@ ion-select.form-control {
 .text-bold { font-weight: 700; }
 
 .text-primary { color: var(--ion-color-primary); }
+.text-primary-old { color: var(--ion-color-primary-old); }
 .text-danger { color: var(--ion-color-danger); }
 .text-dark { color: #000; }
 
 .d-none { display: none; }
 .d-flex { display: flex; }
 
+.flex-column { flex-direction: column; }
 .flex-1 { flex: 1; }
 .justify-space-around { justify-content: space-around; }
 .justify-space-between { justify-content: space-between; }
 .align-items-center { align-items: center; }
+.align-items-end { align-items: flex-end; }
 
 .w-50 { width: 50%; }
 .w-75 { width: 75%; }

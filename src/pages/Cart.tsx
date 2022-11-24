@@ -117,7 +117,7 @@ class CartPage extends React.Component<RouterProps, CartPageState> {
         const user = item.user;
         let seller: React.ReactNode = '';
         if (!sellers.includes(user.id)) {
-          seller = <div className="cart-seller mb-1">{ user.name }</div>;
+          seller = <div className="cart-seller bg-secondary-old mb-1">{ user.name }</div>;
           sellers.push(user.id);
         }
 
@@ -129,7 +129,7 @@ class CartPage extends React.Component<RouterProps, CartPageState> {
               <img src={WEBURL + product.photos[0]} alt={product.name + ' Image'} width={75} height={75} className="mr-3" />
               <div className="cart-item-info">
                 <Link to={`/product/${product.id}`} className="cart-item-title">{ product.name }</Link>
-                <div className="text-primary text-sm mt-2">Price: { product.price }</div>
+                <div className="text-primary-old text-sm mt-2">Price: { product.price }</div>
                 <div className="cart-item-quantity mt-1">
                   <button type="button" onClick={this.updateQuantity('-', i)}>-</button>
                   <div className="text-center">{ item.quantity }</div>
@@ -145,7 +145,7 @@ class CartPage extends React.Component<RouterProps, CartPageState> {
     return (
       <IonPage>
         <IonContent fullscreen>
-          <header className="page-header">
+          <header className="page-header bg-primary-old">
             <button type="button" className="btn-nav" onClick={() => { this.props.history.goBack(); }}>
               <LeftIcon width={20} height={20} />
             </button>
@@ -153,18 +153,16 @@ class CartPage extends React.Component<RouterProps, CartPageState> {
           </header>
 
           <main className="main-cart">
-            <CartIcon className="cart-icon" />
-
-            { this.state.cart.length > 0 && cart }
+            { this.state.cart.length > 0 ? cart : <CartIcon className="cart-icon" />}
           </main>
 
-          <footer className="cart-actions">
+          <footer className="cart-actions bg-secondary-old">
             <input type="checkbox" id="cart-all" className="ml-1" onChange={this.selectAll} />
             <div className="flex-1 ml-1">
               <label htmlFor="cart-all">All</label>
             </div>
             <div className="mr-3">Total: <span className="text-danger text-bold">{ total.toFixed(2) }</span></div>
-            <button type="button" className="cart-btn btn btn-primary" onClick={this.checkout}>Check Out</button>
+            <button type="button" className="cart-btn btn btn-primary-old" onClick={this.checkout}>Check Out</button>
           </footer>
         </IonContent>
       </IonPage>

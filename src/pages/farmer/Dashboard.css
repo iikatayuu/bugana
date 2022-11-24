@@ -1,7 +1,7 @@
 
 .dashboard-title-bar {
   font-family: 'Inter';
-  background-color: var(--ion-color-secondary);
+  background-color: var(--ion-color-secondary-old);
   color: var(--ion-color-secondary-contrast);
   font-size: 18px;
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
@@ -25,7 +25,7 @@
 }
 
 .dashboard-balance {
-  color: var(--ion-color-primary);
+  color: var(--ion-color-old);
   font-family: 'Inter';
   font-size: 20px;
   font-weight: 700;
@@ -37,4 +37,12 @@
 
 .dashboard-buttons a {
   font-family: 'Inter';
+}
+
+.top-product {
+  width: 33.33%;
+}
+
+.top-product img {
+  border-radius: 50%;
 }

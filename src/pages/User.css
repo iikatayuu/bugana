@@ -21,7 +21,7 @@
   align-items: center;
   margin: 12px 0;
   padding: 48px 8px;
-  background-color: var(--ion-color-secondary);
+  background-color: var(--ion-color-primary);
 }
 
 .user-menu a {
@@ -47,7 +47,7 @@
   align-items: center;
   margin-bottom: 8px;
   padding: 8px 20px;
-  background-color: var(--ion-color-primary);
+  background-color: var(--ion-color-secondary);
   text-decoration: none;
   font-size: 14px;
   font-weight: 600;

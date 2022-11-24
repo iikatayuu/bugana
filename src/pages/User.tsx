@@ -46,13 +46,13 @@ class UserPage extends React.Component<RouterProps, UserPageState> {
 
           <nav className="user-menu">
             <Link to="/user/pickup" className="mb-2">
-              <button type="button" className="btn btn-block btn-round">To Pick up</button>
+              <button type="button" className="btn btn-secondary btn-block btn-round text-dark">To Pick up</button>
             </Link>
             <Link to="/user/deliver" className="mb-2">
-              <button type="button" className="btn btn-block btn-round">To Deliver</button>
+              <button type="button" className="btn btn-secondary btn-block btn-round text-dark">To Deliver</button>
             </Link>
             <Link to="/user/history" className="mb-2">
-              <button type="button" className="btn btn-block btn-round">Purchase History</button>
+              <button type="button" className="btn btn-secondary btn-block btn-round text-dark">Purchase History</button>
             </Link>
           </nav>
 

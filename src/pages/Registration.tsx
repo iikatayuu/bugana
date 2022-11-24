@@ -53,7 +53,7 @@ class RegistrationPage extends React.Component<RouterProps, RegistrationPageStat
   render () {
     return (
       <IonPage>
-        <IonContent fullscreen style={{ '--background': '#097969' }}>
+        <IonContent fullscreen style={{ '--background': 'var(--ion-color-secondary)' }}>
           <form action={ WEBAPI + '/register.php' } method="post" className="form-register" onSubmit={this.register}>
             <div className="card">
               <h6 className="register-title mb-2">Sign-up</h6>
@@ -100,7 +100,7 @@ class RegistrationPage extends React.Component<RouterProps, RegistrationPageStat
                 <input type="text" name="address-purok" placeholder="Purok" className="form-control" required />
               </div>
 
-              <div className="form-group mb-1">
+              <div className="form-group mb-2">
                 <IonSelect name="address-brgy" placeholder="Select barangay" interface="popover" className="form-control">
                   <IonSelectOption>Abuanan</IonSelectOption>
                   <IonSelectOption>Alianza</IonSelectOption>
@@ -127,6 +127,11 @@ class RegistrationPage extends React.Component<RouterProps, RegistrationPageStat
                   <IonSelectOption>Taloc</IonSelectOption>
                   <IonSelectOption>Sampinit</IonSelectOption>
                 </IonSelect>
+              </div>
+
+              <p className="text-md text-bold mb-1">Valid ID (for verification):</p>
+              <div className="form-group mb-1">
+                <input type="file" name="valid-id" className="form-control" required />
               </div>
 
               {

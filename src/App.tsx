@@ -21,6 +21,7 @@ import FarmerDashboardPage from './pages/farmer/Dashboard';
 import ProductsRecordPage from './pages/farmer/ProductsRecord';
 import SalesRecordPage from './pages/farmer/SalesRecord';
 import HistoryRecordPage from './pages/farmer/HistoryRecord';
+import SalesRecordTransactionPage from './pages/farmer/SalesRecordTransaction';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -74,6 +75,7 @@ class App extends React.Component {
               <Route exact strict path="/farmer/dashboard" component={FarmerDashboardPage} />
               <Route exact strict path="/records/products" component={ProductsRecordPage} />
               <Route exact strict path="/records/sales" component={SalesRecordPage} />
+              <Route exact strict path="/records/sales/:id" component={SalesRecordTransactionPage} />
               <Route exact strict path="/records/history" component={HistoryRecordPage} />
 
               <Route exact strict path="/profile" component={ProfilePage} />

@@ -23,6 +23,6 @@
 .picked-up { background-color: #fff; }
 
 .delivered {
-  background-color: var(--ion-color-secondary);
+  background-color: var(--ion-color-secondary-old);
   color: #fff;
 }

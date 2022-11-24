@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { IonPage, IonContent } from '@ionic/react';
 import axios from 'axios';
 
@@ -92,10 +93,16 @@ class SalesRecordPage extends React.Component<RouterProps, SalesRecordPageState>
       let transactionid = transaction.id;
       while (transactionid.length < 5) transactionid = `0${transactionid}`;
 
+      const date = new Date();
+      const dateStr = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
+
       transactions.push(
         <tr key={i}>
           <td>{ transactionid }</td>
-          <td>{ transaction.date }</td>
+          <td>{ dateStr }</td>
+          <td>
+            <Link to={'/records/sales/' + transaction.code}>View Details</Link>
+          </td>
         </tr>
       );
     }
@@ -120,9 +127,10 @@ class SalesRecordPage extends React.Component<RouterProps, SalesRecordPageState>
                 <tr className="text-sm">
                   <th>Transaction ID</th>
                   <th>Transaction Date</th>
+                  <th></th>
                 </tr>
               </thead>
-              
+
               <tbody>
                 { transactions }
               </tbody>

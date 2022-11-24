@@ -149,7 +149,7 @@ class DeliveryPage extends React.Component<RouterProps, DeliveryPageState> {
     return (
       <IonPage>
         <IonContent fullscreen>
-          <header className="page-header">
+          <header className="page-header bg-primary-old">
             <button type="button" className="btn-nav" onClick={() => { this.props.history.goBack(); }}>
               <LeftIcon width={20} height={20} />
             </button>

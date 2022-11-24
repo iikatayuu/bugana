@@ -134,12 +134,16 @@ class SearchPage extends React.Component<RouterProps, SearchPageState> {
           </header>
 
           <main className="mb-2">
-            <div className="search-icon">
-              <SearchIcon />
-              <div className="text-bold">Find what suits your taste...</div>
-            </div>
-
-            <div className="products">{ products }</div>
+            {
+              products.length > 0
+                ? <div className="products">{ products }</div>
+                : (
+                  <div className="search-icon">
+                    <SearchIcon />
+                    <div className="text-bold">Find what suits your taste...</div>
+                  </div>
+                )
+            }
           </main>
         </IonContent>
       </IonPage>

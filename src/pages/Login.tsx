@@ -73,7 +73,7 @@ class LoginPage extends React.Component<RouterProps, LoginPageState> {
 
     return (
       <IonPage>
-        <IonContent fullscreen style={{ '--background': '#097969' }}>
+        <IonContent fullscreen style={{ '--background': 'var(--ion-color-secondary)' }}>
           <form action={ WEBAPI + '/login.php' } method="post" className="form-login" onSubmit={this.login}>
             <img src={logo} alt="BUGANA Logo" className="login-logo" />
 
