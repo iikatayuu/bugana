@@ -62,6 +62,7 @@ class CheckoutPage extends React.Component<RouterProps, CheckoutPageState> {
       const response = await axios.post(`${WEBAPI}/checkout.php`, {
         items: this.state.items,
         paymentoption: this.state.payment,
+        shipping: this.state.payment === 'delivery' ? this.state.shipping : 0,
         token
       });
 

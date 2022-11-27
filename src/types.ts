@@ -96,6 +96,7 @@ export interface Transaction {
   };
   quantity: string;
   date: string;
+  shipping: string;
   amount: string;
   paymentoption: string;
   status: string;

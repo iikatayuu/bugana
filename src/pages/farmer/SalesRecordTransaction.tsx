@@ -10,7 +10,6 @@ import { ReactComponent as LoaderIcon } from '../../assets/loader.svg';
 import './Dashboard.css';
 
 interface SalesRecordTransactionPageState {
-  shipping: number;
   transactionid: string;
   transactions: Transaction[];
   loading: boolean;
@@ -22,7 +21,6 @@ class SalesRecordTransactionPage extends React.Component<RouterProps, SalesRecor
     super(props);
 
     this.state = {
-      shipping: 0,
       transactionid: props.match.params.id,
       transactions: [] as Transaction[],
       loading: true,
@@ -46,11 +44,7 @@ class SalesRecordTransactionPage extends React.Component<RouterProps, SalesRecor
       const response = await axios.get(`${WEBAPI}/transaction/get.php?${params.toString()}`);
       if (response.data.success) {
         const transactions = response.data.transactions;
-        const tx = transactions[0];
-        const shippingFeeRes = await axios.get(`${WEBAPI}/shipping.php?brgy=${tx.user.addressbrgy}`);
-        const shipping = shippingFeeRes.data.fee;
-
-        this.setState({ transactions, shipping });
+        this.setState({ transactions });
       } else {
         this.setState({ error: response.data.message });
       }
@@ -81,7 +75,7 @@ class SalesRecordTransactionPage extends React.Component<RouterProps, SalesRecor
       totalAmount += parseFloat(transaction.amount);
     }
 
-    if (tx !== null && tx.paymentoption === 'delivery') totalAmount += this.state.shipping;
+    if (tx !== null && tx.paymentoption === 'delivery') totalAmount += parseFloat(tx.shipping);
 
     return (
       <IonPage>

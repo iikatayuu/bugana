@@ -10,7 +10,6 @@ import { ReactComponent as LoaderIcon } from '../assets/loader.svg';
 import './Transaction.css';
 
 interface HistoryPageState {
-  shipping: number;
   transactions: Transaction[][];
   loading: boolean;
   error: string;
@@ -21,7 +20,6 @@ class HistoryPage extends React.Component<RouterProps, HistoryPageState> {
     super(props);
 
     this.state = {
-      shipping: 0,
       transactions: [],
       loading: true,
       error: ''
@@ -38,11 +36,6 @@ class HistoryPage extends React.Component<RouterProps, HistoryPageState> {
     try {
       const response = await axios.get(`${WEBAPI}/transaction/list.php?token=${token}`);
       if (response.data.success) {
-        const profileRes = await axios.get(`${WEBAPI}/profile.php?token=${token}`);
-        const profile = profileRes.data.profile;
-        const shippingFeeRes = await axios.get(`${WEBAPI}/shipping.php?brgy=${profile.addressbrgy}`);
-        const shipping = shippingFeeRes.data.fee;
-
         const transactions: Transaction[] = response.data.transactions;
         const grouped: Transaction[][] = [];
         let index = -1;
@@ -59,7 +52,7 @@ class HistoryPage extends React.Component<RouterProps, HistoryPageState> {
           }
         }
 
-        this.setState({ transactions: grouped, shipping });
+        this.setState({ transactions: grouped });
       } else {
         this.setState({ error: response.data.message });
       }
@@ -75,6 +68,7 @@ class HistoryPage extends React.Component<RouterProps, HistoryPageState> {
     for (let i = 0; i < this.state.transactions.length; i++) {
       const items = this.state.transactions[i];
       const sellers: string[] = [];
+      const shipping = parseFloat(items[0].shipping);
 
       transactions.push(
         <div className="transaction card card-tertiary card-rect m-2 text-bold" key={i}>
@@ -104,8 +98,8 @@ class HistoryPage extends React.Component<RouterProps, HistoryPageState> {
                     <div className="transaction-details flex-1">
                       <div className="mb-1">Quantity: { transaction.quantity }</div>
                       <div className="mb-1">Amount: { (parseFloat(transaction.amount) / parseInt(transaction.quantity)).toFixed(2) }</div>
-                      { transaction.paymentoption === 'delivery' && <div className="mb-1">Shipping Fee: { this.state.shipping.toFixed(2) }</div> }
-                      <div className="mb-1">Total Amount: { (parseFloat(transaction.amount) + (transaction.paymentoption === 'delivery' ? this.state.shipping : 0)).toFixed(2) }</div>
+                      { transaction.paymentoption === 'delivery' && <div className="mb-1">Shipping Fee: { shipping.toFixed(2) }</div> }
+                      <div className="mb-1">Total Amount: { (parseFloat(transaction.amount) + (transaction.paymentoption === 'delivery' ? shipping : 0)).toFixed(2) }</div>
                     </div>
                   </div>
                 </React.Fragment>
