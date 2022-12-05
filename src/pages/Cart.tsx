@@ -156,7 +156,7 @@ class CartPage extends React.Component<RouterProps, CartPageState> {
             { this.state.cart.length > 0 ? cart : <CartIcon className="cart-icon" />}
           </main>
 
-          <footer className="cart-actions bg-secondary-old">
+          <footer className="cart-actions">
             <input type="checkbox" id="cart-all" className="ml-1" onChange={this.selectAll} />
             <div className="flex-1 ml-1">
               <label htmlFor="cart-all">All</label>

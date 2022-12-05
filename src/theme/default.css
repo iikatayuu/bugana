@@ -165,16 +165,6 @@ ion-select.form-control {
   --placeholder-opacity: 0.60;
 }
 
-.bg-primary-old {
-  background-color: var(--ion-color-primary-old);
-  color: var(--ion-color-primary-old-contrast);
-}
-
-.bg-secondary-old {
-  background-color: var(--ion-color-secondary-old);
-  color: var(--ion-color-secondary-old-contrast);
-}
-
 .bg-tertiary {
   background-color: var(--ion-color-tertiary);
   color: var(--ion-color-tertiary-contrast);
