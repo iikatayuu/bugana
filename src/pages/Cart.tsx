@@ -117,7 +117,7 @@ class CartPage extends React.Component<RouterProps, CartPageState> {
         const user = item.user;
         let seller: React.ReactNode = '';
         if (!sellers.includes(user.id)) {
-          seller = <div className="cart-seller bg-secondary-old mb-1">{ user.name }</div>;
+          seller = <div className="cart-seller mb-1">{ user.name }</div>;
           sellers.push(user.id);
         }
 
@@ -145,7 +145,7 @@ class CartPage extends React.Component<RouterProps, CartPageState> {
     return (
       <IonPage>
         <IonContent fullscreen>
-          <header className="page-header bg-primary-old">
+          <header className="page-header">
             <button type="button" className="btn-nav" onClick={() => { this.props.history.goBack(); }}>
               <LeftIcon width={20} height={20} />
             </button>
@@ -162,7 +162,7 @@ class CartPage extends React.Component<RouterProps, CartPageState> {
               <label htmlFor="cart-all">All</label>
             </div>
             <div className="mr-3">Total: <span className="text-danger text-bold">{ total.toFixed(2) }</span></div>
-            <button type="button" className="cart-btn btn btn-primary-old" onClick={this.checkout}>Check Out</button>
+            <button type="button" className="cart-btn btn btn-primary" onClick={this.checkout}>Check Out</button>
           </footer>
         </IonContent>
       </IonPage>

@@ -200,7 +200,7 @@ class ProductPage extends React.Component<RouterProps, ProductPageState> {
     return (
       <IonPage>
         <IonContent fullscreen>
-          <header className="page-header bg-primary-old">
+          <header className="page-header">
             <button type="button" className="btn-nav" onClick={() => { this.props.history.goBack(); }}>
               <LeftIcon width={20} height={20} />
             </button>
@@ -260,8 +260,8 @@ class ProductPage extends React.Component<RouterProps, ProductPageState> {
                 </div>
 
                 <div className="product-actions d-flex justify-space-around mt-3">
-                  <button type="button" className="btn btn-secondary-old btn-lg btn-round" onClick={this.open('cart')}>Add to Cart</button>
-                  <button type="button" className="btn btn-secondary-old btn-lg btn-round" onClick={this.open('checkout')}>Checkout</button>
+                  <button type="button" className="btn btn-secondary btn-lg btn-round" onClick={this.open('cart')}>Add to Cart</button>
+                  <button type="button" className="btn btn-secondary btn-lg btn-round" onClick={this.open('checkout')}>Checkout</button>
                 </div>
               </div>
             }
@@ -280,7 +280,7 @@ class ProductPage extends React.Component<RouterProps, ProductPageState> {
                 </div>
               </div>
 
-              <button type="submit" className="btn btn-primary-old btn-xl btn-round text-align mt-4" disabled={this.state.addingCart}>
+              <button type="submit" className="btn btn-primary btn-xl btn-round text-align mt-4" disabled={this.state.addingCart}>
                 { this.state.addingCart ? 'Adding to cart...' : 'Add to Cart' }
               </button>
             </form>
@@ -298,7 +298,7 @@ class ProductPage extends React.Component<RouterProps, ProductPageState> {
                 </div>
               </div>
 
-              <button type="submit" className="btn btn-primary-old btn-xl btn-round text-align mt-4" disabled={this.state.checkingOut}>
+              <button type="submit" className="btn btn-primary btn-xl btn-round text-align mt-4" disabled={this.state.checkingOut}>
                 { this.state.checkingOut ? 'Checking out...' : 'Checkout' }
               </button>
             </form>

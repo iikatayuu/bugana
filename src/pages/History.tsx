@@ -118,7 +118,7 @@ class HistoryPage extends React.Component<RouterProps, HistoryPageState> {
     return (
       <IonPage>
         <IonContent fullscreen>
-          <header className="page-header bg-primary-old">
+          <header className="page-header">
             <button type="button" className="btn-nav" onClick={() => { this.props.history.goBack(); }}>
               <LeftIcon width={20} height={20} />
             </button>

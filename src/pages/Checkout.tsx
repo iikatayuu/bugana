@@ -130,7 +130,7 @@ class CheckoutPage extends React.Component<RouterProps, CheckoutPageState> {
         const totalPrice = parseInt(item.quantity) * price;
         let seller: React.ReactNode = '';
         if (!sellers.includes(user.id)) {
-          seller = <div className="checkout-seller bg-secondary-old mb-1">{ user.name }</div>
+          seller = <div className="checkout-seller mb-1">{ user.name }</div>
           sellers.push(user.id);
         }
 
@@ -155,7 +155,7 @@ class CheckoutPage extends React.Component<RouterProps, CheckoutPageState> {
     return (
       <IonPage className={this.state.confirm ? 'blur' : ''}>
         <IonContent fullscreen>
-          <header className="page-header bg-primary-old">
+          <header className="page-header">
             <button type="button" className="btn-nav" onClick={() => { this.props.history.goBack(); }}>
               <LeftIcon width={20} height={20} />
             </button>
@@ -242,14 +242,14 @@ class CheckoutPage extends React.Component<RouterProps, CheckoutPageState> {
 
           <footer className="checkout-actions">
             <div className="flex-1">Total Payment: <span className="text-primary-old text-bold ml-2">{ total.toFixed(2) }</span></div>
-            <button type="button" className="checkout-btn btn btn-primary-old" onClick={this.openModal}>Confirm</button>
+            <button type="button" className="checkout-btn btn btn-primary" onClick={this.openModal}>Confirm</button>
           </footer>
 
           <IonModal id="modal-confirm" isOpen={this.state.confirm} onDidDismiss={() => this.setState({ confirm: false })}>
             <IonContent>
               <div className="modal-confirm-content m-3">
                 <div className="text-center text-bold mb-1">CONFIRM CHECKOUT</div>
-                <div className="modal-checkout card card-rect card-primary-old">
+                <div className="modal-checkout card card-rect card-primary">
                   Upon confirming this purchase, you are agreeing to the following terms:
                   <ol>
                     <li>1. Delivery hours is 12NN and 6PM</li>
