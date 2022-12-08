@@ -46,3 +46,31 @@
 .top-product img {
   border-radius: 50%;
 }
+
+.tooltip-content {
+  display: none;
+  position: absolute;
+  right: 8px;
+  margin-top: 5px;
+  min-width: 150px;
+  padding: 4px 16px;
+  background-color: #fff;
+  border: 1px solid #fff;
+  border-radius: 5px;
+  box-shadow: 1px 1px 20px #aaa;
+}
+
+.tooltip-content::before {
+  content: "";
+  position: absolute;
+  top: calc(-50% + 25px);
+  right: 12.5px;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent #fff transparent;
+}
+
+.tooltip-content.active {
+  display: block;
+}

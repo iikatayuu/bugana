@@ -7,11 +7,13 @@ import axios from 'axios';
 import { RouterProps, Product } from '../../types';
 import { WEBAPI, WEBURL } from '../../variables';
 import logoInverse from '../../assets/logo-inverse.png';
+import { ReactComponent as HelpIcon } from '../../assets/help.svg';
 import './Dashboard.css';
 
 interface DashboardPageState {
   top3Products: Product[];
   currentMonthIncome: number;
+  tooltip: boolean;
   loading: boolean;
   error: string;
 }
@@ -23,9 +25,12 @@ class DashboardPage extends React.Component<RouterProps, DashboardPageState> {
     this.state = {
       top3Products: [],
       currentMonthIncome: 0,
+      tooltip: false,
       loading: true,
       error: ''
     };
+
+    this.toggleTooltip = this.toggleTooltip.bind(this);
   }
 
   async componentDidMount () {
@@ -58,6 +63,13 @@ class DashboardPage extends React.Component<RouterProps, DashboardPageState> {
     this.setState({ loading: false });
   }
 
+  toggleTooltip (event: React.MouseEvent) {
+    event.preventDefault();
+
+    const tooltip = this.state.tooltip;
+    this.setState({ tooltip: !tooltip });
+  }
+
   render () {
     const token = localStorage.getItem('token');
     const payloadStr = localStorage.getItem('payload');
@@ -84,6 +96,17 @@ class DashboardPage extends React.Component<RouterProps, DashboardPageState> {
             <div className="d-flex">
               <img src={WEBAPI + '/profileimg.php?id=' + payload.userid} alt={payload.username + ' Image'} width={75} height={75} className="mr-2" />
               <div className="dashboard-name flex-1">{ payload.name }</div>
+
+              <div className="tooltip">
+                <button type="button" className="btn btn-nav" onClick={this.toggleTooltip}>
+                  <HelpIcon />
+                </button>
+                <div className={ 'tooltip-content p-2' + (this.state.tooltip ? ' active' : '') }>
+                  <div>Products Records o "<i>Tala ng mga Produkto</i>"</div>
+                  <div>Sales Records o "<i>Tala ng mga Benta</i>"</div>
+                  <div>Sales History o "<i>Kasaysayan ng mga Benta</i>"</div>
+                </div>
+              </div>
             </div>
 
             <div className="card card-rect card-border card-shadow w-75 mt-5 mb-3 mx-auto text-center">
