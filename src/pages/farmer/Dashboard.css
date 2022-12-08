@@ -63,7 +63,7 @@
 .tooltip-content::before {
   content: "";
   position: absolute;
-  top: calc(-50% + 25px);
+  top: calc(-50% + 42.5px);
   right: 12.5px;
   margin-left: -5px;
   border-width: 5px;

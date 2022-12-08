@@ -102,9 +102,9 @@ class DashboardPage extends React.Component<RouterProps, DashboardPageState> {
                   <HelpIcon />
                 </button>
                 <div className={ 'tooltip-content p-2' + (this.state.tooltip ? ' active' : '') }>
-                  <div>Products Records o "<i>Tala ng mga Produkto</i>"</div>
-                  <div>Sales Records o "<i>Tala ng mga Benta</i>"</div>
-                  <div>Sales History o "<i>Kasaysayan ng mga Benta</i>"</div>
+                  <div className="mb-2">Products Records o "<i>Tala ng mga Produkto</i>"</div>
+                  <div className="mb-2">Sales Records o "<i>Tala ng mga Benta</i>"</div>
+                  <div className="mb-2">Sales History o "<i>Kasaysayan ng mga Benta</i>"</div>
                 </div>
               </div>
             </div>
