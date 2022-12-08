@@ -4,6 +4,7 @@ import { Route, Redirect, Switch } from 'react-router-dom';
 import { IonApp, IonRouterOutlet, setupIonicReact } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import LoginPage from './pages/Login';
+import ForgotPage from './pages/ForgotPage';
 import RegistrationPage from './pages/Registration';
 import HomePage from './pages/Home';
 import SearchPage from './pages/Search';
@@ -60,6 +61,7 @@ class App extends React.Component {
           <IonRouterOutlet animated={false}>
             <Switch>
               <Route exact strict path="/" component={LoginPage} />
+              <Route exact strict path="/forgot" component={ForgotPage} />
               <Route exact strict path="/register" component={RegistrationPage} />
               <Route exact strict path="/dashboard" component={HomePage} />
               <Route exact strict path="/search" component={SearchPage} />
