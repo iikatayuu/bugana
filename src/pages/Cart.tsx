@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { IonPage, IonContent } from '@ionic/react';
+import { IonPage, IonContent, useIonAlert, UseIonAlertResult } from '@ionic/react';
 import axios from 'axios';
 
 import { RouterProps, CartItem } from '../types';
@@ -9,6 +9,10 @@ import { WEBAPI, WEBURL } from '../variables';
 import { ReactComponent as LeftIcon } from '../assets/left.svg';
 import { ReactComponent as CartIcon } from '../assets/cart-lg.svg';
 import './Cart.css';
+
+interface CartPageProps extends RouterProps {
+  presentAlerts: UseIonAlertResult;
+}
 
 interface CartPageState {
   cart: CartItemSelectable[];
@@ -19,8 +23,8 @@ interface CartItemSelectable extends CartItem {
   selected: boolean;
 }
 
-class CartPage extends React.Component<RouterProps, CartPageState> {
-  constructor (props: RouterProps) {
+class CartPage extends React.Component<CartPageProps, CartPageState> {
+  constructor (props: CartPageProps) {
     super(props);
 
     this.state = {
@@ -28,6 +32,7 @@ class CartPage extends React.Component<RouterProps, CartPageState> {
       message: ''
     };
 
+    this.getCart = this.getCart.bind(this);
     this.updateQuantity = this.updateQuantity.bind(this);
     this.toggleSelect = this.toggleSelect.bind(this);
     this.selectAll = this.selectAll.bind(this);
@@ -38,8 +43,40 @@ class CartPage extends React.Component<RouterProps, CartPageState> {
     return (event: React.MouseEvent) => {
       const cart = this.state.cart;
       const quantity = parseInt(cart[index].quantity)
-      if (action === '-') cart[index].quantity = (quantity - 1).toString();
+      if (action === '-' && quantity - 1 > -1) cart[index].quantity = (quantity - 1).toString();
       if (action === '+') cart[index].quantity = (quantity + 1).toString();
+
+      if (action === '-' && quantity === 0) {
+        const [presentAlert] = this.props.presentAlerts;
+        const token = localStorage.getItem('token');
+        if (token === null) {
+          this.props.history.push('/');
+          return;
+        }
+
+        presentAlert({
+          header: 'Remove item?',
+          buttons: [
+            {
+              text: 'Cancel',
+              role: 'cancel'
+            },
+            {
+              text: 'Remove',
+              role: 'confirm',
+              handler: async () => {
+                await axios.post(`${WEBAPI}/cart/remove.php`, {
+                  token: token,
+                  id: cart[index].id
+                });
+
+                await this.getCart();
+              }
+            }
+          ]
+        });
+      }
+
       this.setState({ cart });
     }
   }
@@ -78,7 +115,7 @@ class CartPage extends React.Component<RouterProps, CartPageState> {
     this.props.history.push('/checkout');
   }
 
-  async componentDidMount () {
+  async getCart () {
     const token = localStorage.getItem('token');
     if (token === null) {
       this.props.history.push('/');
@@ -98,6 +135,10 @@ class CartPage extends React.Component<RouterProps, CartPageState> {
     } catch (error: any) {
       this.setState({ message: error.message });
     }
+  }
+
+  async componentDidMount () {
+    await this.getCart();
   }
 
   render () {
@@ -170,4 +211,7 @@ class CartPage extends React.Component<RouterProps, CartPageState> {
   }
 }
 
-export default CartPage;
+export default function CartPageWrapper (props: RouterProps) {
+  const presentAlerts = useIonAlert();
+  return <CartPage {...props} presentAlerts={presentAlerts} />;
+}
