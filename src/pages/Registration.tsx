@@ -53,7 +53,7 @@ class RegistrationPage extends React.Component<RouterProps, RegistrationPageStat
   render () {
     return (
       <IonPage>
-        <IonContent fullscreen style={{ '--background': 'var(--ion-color-secondary)' }}>
+        <IonContent fullscreen style={{ '--background': 'var(--ion-color-primary)' }}>
           <form action={ WEBAPI + '/register.php' } method="post" className="form-register" onSubmit={this.register}>
             <div className="card">
               <h6 className="register-title mb-2">Sign-up</h6>
