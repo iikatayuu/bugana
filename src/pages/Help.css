@@ -1,0 +1,37 @@
+
+.help-title {
+  margin: 8px 8px 16px 8px;
+  font-size: 2.35em;
+  font-weight: 500;
+  text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.faq {
+  width: 124px;
+  font-size: 1.25em;
+  font-weight: 500;
+  line-height: 1.15;
+  text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.faq-item {
+  width: 225px;
+  font-family: 'Inter';
+  font-weight: 500;
+}
+
+.help-sections {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.help-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 32px 12px;
+  width: 90px;
+  font-family: 'Inter';
+  text-decoration: none;
+}

@@ -17,6 +17,13 @@ import ProfileEditPage from './pages/ProfileEdit';
 import ProductPage from './pages/Product';
 import CartPage from './pages/Cart';
 import CheckoutPage from './pages/Checkout';
+import HelpPage from './pages/Help';
+import HelpAccountsPage from './pages/HelpAccounts';
+import HelpSecurityPage from './pages/HelpSecurity';
+import HelpPaymentsPage from './pages/HelpPayments';
+import HelpViolationPage from './pages/HelpViolation';
+import HelpDeliveryPage from './pages/HelpDelivery';
+import HelpSalesPage from './pages/HelpSales';
 
 import FarmerDashboardPage from './pages/farmer/Dashboard';
 import ProductsRecordPage from './pages/farmer/ProductsRecord';
@@ -73,6 +80,14 @@ class App extends React.Component {
               <Route exact strict path="/product"><Redirect to="/" /></Route>
               <Route exact strict path="/cart" component={CartPage} />
               <Route exact strict path="/checkout" component={CheckoutPage} />
+
+              <Route exact strict path="/help" component={HelpPage} />
+              <Route exact strict path="/help/accounts" component={HelpAccountsPage} />
+              <Route exact strict path="/help/security" component={HelpSecurityPage} />
+              <Route exact strict path="/help/payments" component={HelpPaymentsPage} />
+              <Route exact strict path="/help/violation" component={HelpViolationPage} />
+              <Route exact strict path="/help/delivery" component={HelpDeliveryPage} />
+              <Route exact strict path="/help/sales" component={HelpSalesPage} />
 
               <Route exact strict path="/farmer/dashboard" component={FarmerDashboardPage} />
               <Route exact strict path="/records/products" component={ProductsRecordPage} />

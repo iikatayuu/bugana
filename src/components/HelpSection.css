@@ -1,0 +1,34 @@
+
+.help-section-title {
+  font-family: 'Inter';
+  font-weight: 500;
+  font-size: 1.5em;
+}
+
+.help-modal {
+  --width: 95%;
+  --height: 50%;
+}
+
+.help-modal-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding: 12px;
+  background-color: #d9d9d9;
+}
+
+.help-modal-content p {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
+}
+
+.btn-help {
+  padding: 8px 12px !important;
+  background-color: #7ecc49;
+  color: #000;
+}

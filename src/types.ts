@@ -102,6 +102,12 @@ export interface Transaction {
   status: string;
 }
 
+export interface QnA {
+  section: string;
+  question: string;
+  answer: string;
+}
+
 export interface RouterProps {
   match: any;
   location: any;
