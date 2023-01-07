@@ -3,6 +3,7 @@ import React from 'react';
 import { Route, Redirect, Switch } from 'react-router-dom';
 import { IonApp, IonRouterOutlet, setupIonicReact } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
+
 import LoginPage from './pages/Login';
 import ForgotPage from './pages/ForgotPage';
 import RegistrationPage from './pages/Registration';
@@ -30,6 +31,7 @@ import ProductsRecordPage from './pages/farmer/ProductsRecord';
 import SalesRecordPage from './pages/farmer/SalesRecord';
 import HistoryRecordPage from './pages/farmer/HistoryRecord';
 import SalesRecordTransactionPage from './pages/farmer/SalesRecordTransaction';
+import { RouterProps } from './types';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -54,11 +56,14 @@ import './theme/default.css';
 setupIonicReact();
 
 class App extends React.Component {
-  logout () {
+  logout (props: RouterProps) {
     localStorage.removeItem('token');
     localStorage.removeItem('payload');
     localStorage.removeItem('checkout');
-    return <Redirect to="/" />;
+
+    const params = new URLSearchParams(props.location.search);
+    const type = params.get('type');
+    return <Redirect to={`/?type=${type}`} />;
   }
 
   render () {

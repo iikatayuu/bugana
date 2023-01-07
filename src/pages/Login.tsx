@@ -19,8 +19,10 @@ class LoginPage extends React.Component<RouterProps, LoginPageState> {
   constructor (props: RouterProps) {
     super(props);
 
+    const params = new URLSearchParams(props.location.search);
+    const type = params.get('type');
     this.state = {
-      type: 'customer',
+      type: type === null ? 'customer' : type,
       message: '',
       signingin: false
     };

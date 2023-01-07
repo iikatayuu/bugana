@@ -72,7 +72,7 @@ class ProfilePage extends React.Component<ProfilePageProps, ProfilePageState> {
             const response = await axios.post(`${WEBAPI}/delete.php?token=${token}`);
             if (response.data.success) {
               success = true;
-              props.history.push('/logout');
+              props.history.push('/logout?type=customer');
             }
           } catch (error) {}
 

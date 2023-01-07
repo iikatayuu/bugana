@@ -66,7 +66,7 @@ class UserPage extends React.Component<RouterProps, UserPageState> {
               <span>Help Center</span>
               <RightIcon width={20} height={20} />
             </Link>
-            <Link to="/logout" className="mb-2">
+            <Link to="/logout?type=customer" className="mb-2">
               <span>Log Out</span>
               <RightIcon width={20} height={20} />
             </Link>

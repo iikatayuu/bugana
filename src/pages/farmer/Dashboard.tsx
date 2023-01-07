@@ -137,7 +137,7 @@ class DashboardPage extends React.Component<RouterProps, DashboardPageState> {
               <div className="mb-3"><Link to="/records/sales" className="btn btn-secondary btn-round btn-block text-bold px-3" role="button">Sales Records</Link></div>
               <div className="mb-3"><Link to="/records/history" className="btn btn-secondary btn-round btn-block text-bold px-3" role="button">Sales History</Link></div>
               <div className="mb-3"><Link to="/profile" className="btn btn-secondary btn-round btn-block text-bold px-3" role="button">My Account</Link></div>
-              <div className="mb-3"><Link to="/logout" className="btn btn-secondary btn-round btn-block text-bold px-3" role="button">Log Out</Link></div>
+              <div className="mb-3"><Link to="/logout?type=farmer" className="btn btn-secondary btn-round btn-block text-bold px-3" role="button">Log Out</Link></div>
             </div>
           </main>
         </IonContent>
