@@ -51,11 +51,10 @@ class ProductsRecordPage extends React.Component<RouterProps, ProductsRecordPage
     const page = reset ? this.state.page : this.state.page + 1;
     const payload: TokenPayload = JSON.parse(payloadStr);
     const params = new URLSearchParams();
-    let userid = payload.userid;
-    while (userid.length < 2) userid = `0${userid}`;
+    const usercode = payload.usercode;
     params.set('page', page.toString());
     params.set('category', category);
-    params.set('farmer', `F${userid}`);
+    params.set('farmer', usercode);
     params.set('stock', '1');
 
     try {

@@ -7,6 +7,7 @@ export interface TokenPayload {
   iss: string;
   type: UserType;
   userid: string;
+  usercode: string;
   username: string;
   name: string;
 }
