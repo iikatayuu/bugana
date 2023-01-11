@@ -1,8 +1,8 @@
 
 import { QnA } from './types';
 
-export const WEBURL: string = 'https://bugana.eidoriantan.me';
-export const WEBAPI: string = 'https://bugana.eidoriantan.me/api';
+export const WEBURL: string = 'https://bugana.tk';
+export const WEBAPI: string = 'https://bugana.tk/api';
 
 export const MONTHS: string[] = [
   'JANUARY',
