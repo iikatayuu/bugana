@@ -85,11 +85,11 @@ class LoginPage extends React.Component<RouterProps, LoginPageState> {
               <input type="hidden" name="type" value={this.state.type} />
 
               <div className="form-group mb-1">
-                <input type="text" name="username" placeholder="Username" className="form-control py-2" required />
+                <input type="text" name="username" placeholder="Username" className="form-control form-control-shadow py-2" required />
               </div>
 
               <div className="form-group">
-                <input type="password" name="password" placeholder="Password" className="form-control py-2" required />
+                <input type="password" name="password" placeholder="Password" className="form-control form-control-shadow py-2" required />
               </div>
               <Link to="/forgot" className="text-sm">Forgot Password?</Link>
 
