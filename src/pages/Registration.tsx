@@ -67,7 +67,6 @@ class RegistrationPage extends React.Component<RouterProps, RegistrationPageStat
                 <IonSelect name="gender" placeholder="Select gender" interface="popover" className="form-control">
                   <IonSelectOption>Male</IonSelectOption>
                   <IonSelectOption>Female</IonSelectOption>
-                  <IonSelectOption>Others</IonSelectOption>
                 </IonSelect>
               </div>
 
