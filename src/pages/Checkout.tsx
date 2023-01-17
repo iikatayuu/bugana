@@ -12,6 +12,8 @@ import { ReactComponent as AddressIcon } from '../assets/address.svg';
 import { ReactComponent as BagIcon } from '../assets/bag.svg';
 import { ReactComponent as CartDownIcon } from '../assets/cart-down.svg';
 import { ReactComponent as DetailsIcon } from '../assets/details.svg';
+import { ReactComponent as ModalCheckIcon } from '../assets/modal-check.svg';
+import { ReactComponent as ModalXIcon } from '../assets/modal-x.svg';
 import './Checkout.css';
 
 interface CheckoutPageState {
@@ -23,6 +25,9 @@ interface CheckoutPageState {
   loading: boolean;
   error: string;
   checkingOut: boolean;
+  openDarkModal: boolean;
+  darkModalMessage: string;
+  darkModalIcon: string;
 }
 
 class CheckoutPage extends React.Component<RouterProps, CheckoutPageState> {
@@ -37,16 +42,54 @@ class CheckoutPage extends React.Component<RouterProps, CheckoutPageState> {
       confirm: false,
       loading: true,
       error: '',
-      checkingOut: false
+      checkingOut: false,
+      openDarkModal: false,
+      darkModalMessage: '',
+      darkModalIcon: ''
     };
 
     this.openModal = this.openModal.bind(this);
     this.checkout = this.checkout.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.modal = this.modal.bind(this);
   }
 
   openModal (event: React.MouseEvent) {
-    this.setState({ confirm: true });
+    const items = this.state.items;
+    const profile = this.state.profile;
+    let total = 0;
+    if (items.length > 0 && profile !== null) {
+      for (let i = 0; i < items.length; i++) {
+        const item = items[i];
+        const product = item.product;
+        const price = parseFloat(product.price);
+        const totalPrice = parseInt(item.quantity) * price;
+
+        total += totalPrice;
+      }
+    }
+
+    if (total <= 150) {
+      this.modal('Cannot proceed minimum order is limit to 150 pesos', 'x', true)();
+    } else {
+      this.setState({ confirm: true });
+    }
+  }
+
+  modal (message: string, icon: string = '', show: boolean = true) {
+    return (event?: React.MouseEvent) => {
+      this.setState({
+        darkModalMessage: message,
+        darkModalIcon: icon,
+        openDarkModal: show
+      });
+
+      if (show) {
+        setTimeout(() => {
+          this.setState({ openDarkModal: false });
+        }, 5000);
+      }
+    }
   }
 
   async checkout (event: React.MouseEvent) {
@@ -270,6 +313,19 @@ class CheckoutPage extends React.Component<RouterProps, CheckoutPageState> {
               </div>
             </IonContent>
           </IonModal>
+
+          {
+            this.state.openDarkModal && <React.Fragment>
+              <div className="dark-modal-backdrop" onClick={this.modal('', '', false)}></div>
+              <div className="dark-modal-wrapper" onClick={this.modal('', '', false)}>
+                <div className="dark-modal d-flex flex-column align-items-center text-center">
+                  { this.state.darkModalIcon === 'check' && <ModalCheckIcon width={32} height={32} className="mb-1" /> }
+                  { this.state.darkModalIcon === 'x' && <ModalXIcon width={32} height={32} className="mb-1" /> }
+                  { this.state.darkModalMessage }
+                </div>
+              </div>
+            </React.Fragment>
+          }
         </IonContent>
       </IonPage>
     );

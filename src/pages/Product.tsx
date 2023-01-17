@@ -7,6 +7,8 @@ import { RouterProps, ProductStock, Farmer, CartItem } from '../types';
 import { WEBURL, WEBAPI } from '../variables';
 import { ReactComponent as LeftIcon } from '../assets/left.svg';
 import { ReactComponent as LoaderIcon } from '../assets/loader.svg';
+import { ReactComponent as ModalCheckIcon } from '../assets/modal-check.svg';
+import { ReactComponent as ModalXIcon } from '../assets/modal-x.svg';
 import './Product.css';
 
 interface ProductPageState {
@@ -22,6 +24,9 @@ interface ProductPageState {
   addingCart: boolean;
   checkingOut: boolean;
   message: string;
+  openDarkModal: boolean;
+  darkModalMessage: string;
+  darkModalIcon: string;
 }
 
 type OutType = "cart" | "checkout";
@@ -45,7 +50,10 @@ class ProductPage extends React.Component<RouterProps, ProductPageState> {
       checkoutQuantity: 0,
       addingCart: false,
       checkingOut: false,
-      message: ''
+      message: '',
+      openDarkModal: false,
+      darkModalMessage: '',
+      darkModalIcon: ''
     };
 
     this.imageTouchStart = this.imageTouchStart.bind(this);
@@ -55,6 +63,7 @@ class ProductPage extends React.Component<RouterProps, ProductPageState> {
     this.close = this.close.bind(this);
     this.addToCart = this.addToCart.bind(this);
     this.checkout = this.checkout.bind(this);
+    this.modal = this.modal.bind(this);
   }
 
   imageTouchStart (event: React.TouchEvent) {
@@ -97,6 +106,22 @@ class ProductPage extends React.Component<RouterProps, ProductPageState> {
     });
   }
 
+  modal (message: string, icon: string = '', show: boolean = true) {
+    return (event?: React.MouseEvent) => {
+      this.setState({
+        darkModalMessage: message,
+        darkModalIcon: icon,
+        openDarkModal: show
+      });
+
+      if (show) {
+        setTimeout(() => {
+          this.setState({ openDarkModal: false });
+        }, 5000);
+      }
+    }
+  }
+
   async addToCart (event: React.FormEvent) {
     event.preventDefault();
 
@@ -119,7 +144,7 @@ class ProductPage extends React.Component<RouterProps, ProductPageState> {
       const response = await axios.post(target.action, formData)
       if (response.data.success) {
         this.setState({ cart: false });
-        this.props.history.push('/cart');
+        this.modal('Added to cart', 'check', true)();
       } else {
         this.setState({ message: response.data.message });
       }
@@ -303,6 +328,19 @@ class ProductPage extends React.Component<RouterProps, ProductPageState> {
               </button>
             </form>
           </div>
+
+          {
+            this.state.openDarkModal && <React.Fragment>
+              <div className="dark-modal-backdrop" onClick={this.modal('', '', false)}></div>
+              <div className="dark-modal-wrapper" onClick={this.modal('', '', false)}>
+                <div className="dark-modal d-flex flex-column align-items-center text-center">
+                  { this.state.darkModalIcon === 'check' && <ModalCheckIcon width={32} height={32} className="mb-1" /> }
+                  { this.state.darkModalIcon === 'x' && <ModalXIcon width={32} height={32} className="mb-1" /> }
+                  { this.state.darkModalMessage }
+                </div>
+              </div>
+            </React.Fragment>
+          }
         </IonContent>
       </IonPage>
     );

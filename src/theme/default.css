@@ -273,6 +273,29 @@ ion-select.form-control {
   color: var(--ion-color-primary-contrast);
 }
 
+.dark-modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1200;
+}
+
+.dark-modal-wrapper {
+  position: fixed;
+  top: calc(100vh / 2);
+  left: calc(100vw / 2);
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.dark-modal {
+  background-color: rgba(0, 0, 0, .75);
+  border-radius: 10px;
+  color: #fff;
+  padding: 8px 12px;
+}
+
 .m-1, .my-1, .mt-1 { margin-top: 8px !important; }
 .m-1, .my-1, .mb-1 { margin-bottom: 8px !important; }
 .m-2, .my-2, .mt-2 { margin-top: 12px !important; }
