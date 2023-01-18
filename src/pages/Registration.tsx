@@ -11,6 +11,8 @@ import './Registration.css';
 interface RegistrationPageState {
   message: string;
   registering: boolean;
+  openDarkModal: boolean;
+  darkModalMessage: string;
 }
 
 class RegistrationPage extends React.Component<RouterProps, RegistrationPageState> {
@@ -19,10 +21,31 @@ class RegistrationPage extends React.Component<RouterProps, RegistrationPageStat
 
     this.state = {
       message: '',
-      registering: false
+      registering: false,
+      openDarkModal: false,
+      darkModalMessage: ''
     };
 
     this.register = this.register.bind(this);
+    this.modal = this.modal.bind(this);
+  }
+
+  modal (message: string, callbackFn: Function = () => {}, show: boolean = true) {
+    return (event?: React.MouseEvent) => {
+      this.setState({
+        darkModalMessage: message,
+        openDarkModal: show
+      });
+
+      if (show) {
+        setTimeout(() => {
+          this.setState({ openDarkModal: false });
+          callbackFn();
+        }, 5000);
+      } else {
+        callbackFn();
+      }
+    }
   }
 
   async register (event: React.FormEvent) {
@@ -39,7 +62,9 @@ class RegistrationPage extends React.Component<RouterProps, RegistrationPageStat
       const response = await axios.post(target.action, formData)
       if (response.data.success) {
         target.reset();
-        this.props.history.push('/');
+        this.modal('Successfully registered', () => {
+          this.props.history.push('/');
+        }, true);
       } else {
         this.setState({ message: response.data.message });
       }
@@ -144,6 +169,17 @@ class RegistrationPage extends React.Component<RouterProps, RegistrationPageStat
               <div className="mt-1 text-sm text-center">Already have an account? <Link to="/">Sign in here</Link></div>
             </div>
           </form>
+
+          {
+            this.state.openDarkModal && <React.Fragment>
+              <div className="dark-modal-backdrop" onClick={this.modal('', () => {}, false)}></div>
+              <div className="dark-modal-wrapper" onClick={this.modal('', () => {}, false)}>
+                <div className="dark-modal d-flex flex-column align-items-center text-center">
+                  { this.state.darkModalMessage }
+                </div>
+              </div>
+            </React.Fragment>
+          }
         </IonContent>
       </IonPage>
     );
