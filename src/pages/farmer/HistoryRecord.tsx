@@ -119,12 +119,12 @@ class HistoryRecordPage extends React.Component<RouterProps, HistoryRecordPageSt
               <h5 className="text-lg text-bold mb-3 text-center">MONTHLY GROSS COMPUTATION</h5>
               <div className="d-flex justify-space-around">
                 <span>Sales Income:</span>
-                <span className="text-bold">{ this.state.display === 'current' ? this.state.currentMonthIncome : this.state.lastMonthIncome }</span>
+                <span className="text-bold">{ this.state.display === 'current' ? this.state.currentMonthIncome : this.state.lastMonthIncome } PHP</span>
               </div>
               <h5 className="text-md text-bold my-2 ml-3">Unsold</h5>
               <div className="d-flex justify-space-around mb-4">
                 <span>Perished Products:</span>
-                <span className="text-bold">0</span>
+                <span className="text-bold">0 KG</span>
               </div>
               <div className="d-flex justify-space-around align-items-center text-bold text-dark">
                 <span>TOTAL INCOME:</span>

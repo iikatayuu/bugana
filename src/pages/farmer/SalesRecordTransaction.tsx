@@ -67,8 +67,8 @@ class SalesRecordTransactionPage extends React.Component<RouterProps, SalesRecor
       transactions.push(
         <tr key={i}>
           <td>{ transaction.product.name }</td>
-          <td>{ transaction.quantity }</td>
-          <td>{ transaction.product.price }</td>
+          <td>{ transaction.quantity } KG</td>
+          <td>{ transaction.product.price } PHP</td>
         </tr>
       );
 

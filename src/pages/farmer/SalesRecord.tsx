@@ -93,13 +93,11 @@ class SalesRecordPage extends React.Component<RouterProps, SalesRecordPageState>
       let transactionid = transaction.id;
       while (transactionid.length < 5) transactionid = `0${transactionid}`;
 
-      const date = new Date();
-      const dateStr = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
-
+      const date = transaction.date;
       transactions.push(
         <tr key={i}>
           <td>{ transactionid }</td>
-          <td>{ dateStr }</td>
+          <td>{ date }</td>
           <td>
             <Link to={'/records/sales/' + transaction.code}>View Details</Link>
           </td>
