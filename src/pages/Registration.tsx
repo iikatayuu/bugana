@@ -85,47 +85,47 @@ class RegistrationPage extends React.Component<RouterProps, RegistrationPageStat
               <p className="text-md text-bold mb-1">Personal Information</p>
 
               <div className="form-group mb-1">
-                <input type="text" name="name" placeholder="Full Name" className="form-control" required />
+                <input type="text" name="name" placeholder="Full Name" className="form-control form-control-shadow" required />
               </div>
 
               <div className="form-group mb-1">
-                <IonSelect name="gender" placeholder="Select gender" interface="popover" className="form-control">
+                <IonSelect name="gender" placeholder="Select gender" interface="popover" className="form-control form-control-shadow">
                   <IonSelectOption>Male</IonSelectOption>
                   <IonSelectOption>Female</IonSelectOption>
                 </IonSelect>
               </div>
 
               <div className="form-group mb-1">
-                <input type="text" name="birthday" placeholder="Birthday (YYYY-MM-DD)" className="form-control" required />
+                <input type="text" name="birthday" placeholder="Birthday (YYYY-MM-DD)" className="form-control form-control-shadow" required />
               </div>
 
               <div className="form-group mb-1">
-                <input type="text" name="username" placeholder="Username" className="form-control" required />
+                <input type="text" name="username" placeholder="Username" className="form-control form-control-shadow" required />
               </div>
 
               <div className="form-group mb-1">
-                <input type="password" name="password" placeholder="Password" className="form-control" required />
+                <input type="password" name="password" placeholder="Password" className="form-control form-control-shadow" required />
               </div>
 
               <div className="form-group mb-1">
-                <input type="email" name="email" placeholder="Email" className="form-control" required />
+                <input type="email" name="email" placeholder="Email" className="form-control form-control-shadow" required />
               </div>
 
               <div className="form-group mb-2">
-                <input type="text" name="mobile" placeholder="Mobile number" className="form-control" required />
+                <input type="text" name="mobile" placeholder="Mobile number" className="form-control form-control-shadow" required />
               </div>
 
               <p className="text-md text-bold mb-1">Address</p>
               <div className="form-group mb-1">
-                <input type="text" name="address-street" placeholder="Street" className="form-control" required />
+                <input type="text" name="address-street" placeholder="Street" className="form-control form-control-shadow" required />
               </div>
 
               <div className="form-group mb-1">
-                <input type="text" name="address-purok" placeholder="Purok" className="form-control" required />
+                <input type="text" name="address-purok" placeholder="Purok" className="form-control form-control-shadow" required />
               </div>
 
               <div className="form-group mb-2">
-                <IonSelect name="address-brgy" placeholder="Select barangay" interface="popover" className="form-control">
+                <IonSelect name="address-brgy" placeholder="Select barangay" interface="popover" className="form-control form-control-shadow">
                   <IonSelectOption>Abuanan</IonSelectOption>
                   <IonSelectOption>Alianza</IonSelectOption>
                   <IonSelectOption>Atipuluan</IonSelectOption>
@@ -155,7 +155,7 @@ class RegistrationPage extends React.Component<RouterProps, RegistrationPageStat
 
               <p className="text-md text-bold mb-1">Valid ID (for verification):</p>
               <div className="form-group mb-1">
-                <input type="file" name="valid-id" className="form-control" required />
+                <input type="file" name="valid-id" className="form-control form-control-shadow" required />
               </div>
 
               {
