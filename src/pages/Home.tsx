@@ -12,7 +12,6 @@ import logoInverse from '../assets/logo-inverse.png';
 import banner from '../assets/banner.jpg';
 import { ReactComponent as MagnifyingGlassIcon } from '../assets/magnifying-glass.svg';
 import './Home.css';
-import { threadId } from 'worker_threads';
 
 interface HomePageState {
   topPicksLoading: boolean;
