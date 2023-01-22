@@ -116,14 +116,6 @@ class RegistrationPage extends React.Component<RouterProps, RegistrationPageStat
               </div>
 
               <p className="text-md text-bold mb-1">Address</p>
-              <div className="form-group mb-1">
-                <input type="text" name="address-street" placeholder="Street" className="form-control form-control-shadow" required />
-              </div>
-
-              <div className="form-group mb-1">
-                <input type="text" name="address-purok" placeholder="Purok" className="form-control form-control-shadow" required />
-              </div>
-
               <div className="form-group mb-2">
                 <IonSelect name="address-brgy" placeholder="Select barangay" interface="popover" className="form-control form-control-shadow">
                   <IonSelectOption>Abuanan</IonSelectOption>
@@ -151,6 +143,14 @@ class RegistrationPage extends React.Component<RouterProps, RegistrationPageStat
                   <IonSelectOption>Taloc</IonSelectOption>
                   <IonSelectOption>Sampinit</IonSelectOption>
                 </IonSelect>
+              </div>
+
+              <div className="form-group mb-1">
+                <input type="text" name="address-purok" placeholder="Purok" className="form-control form-control-shadow" required />
+              </div>
+
+              <div className="form-group mb-1">
+                <input type="text" name="address-street" placeholder="Street" className="form-control form-control-shadow" required />
               </div>
 
               <p className="text-md text-bold mb-1">Valid ID (for verification):</p>
