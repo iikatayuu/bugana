@@ -6,6 +6,7 @@ import axios from 'axios';
 
 import { RouterProps, Transaction } from '../../types';
 import { WEBAPI } from '../../variables';
+import { dateFormat } from '../../utils/date';
 import { ReactComponent as LeftIcon } from '../../assets/left.svg';
 import './Dashboard.css';
 
@@ -93,7 +94,7 @@ class SalesRecordPage extends React.Component<RouterProps, SalesRecordPageState>
       let transactionid = transaction.id;
       while (transactionid.length < 5) transactionid = `0${transactionid}`;
 
-      const date = transaction.date;
+      const date = dateFormat(transaction.date);
       transactions.push(
         <tr key={i}>
           <td>{ transactionid }</td>

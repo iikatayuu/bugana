@@ -6,6 +6,7 @@ import axios from 'axios';
 
 import { RouterProps, TokenPayload, Category, ProductStock } from '../../types';
 import { WEBAPI } from '../../variables';
+import { dateFormat } from '../../utils/date';
 import { ReactComponent as LeftIcon } from '../../assets/left.svg';
 import './Dashboard.css';
 
@@ -123,7 +124,7 @@ class ProductsRecordPage extends React.Component<RouterProps, ProductsRecordPage
 
       products.push(
         <tr key={i}>
-          <td>{ product.stocksIn[0]?.date }</td>
+          <td>{ dateFormat(product.stocksIn[0]?.date || '') }</td>
           <td>{ product.name }</td>
           <td>{ quantity } KG</td>
           <td>{ sold * -1 } KG</td>

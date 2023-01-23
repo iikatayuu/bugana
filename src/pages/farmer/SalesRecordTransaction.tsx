@@ -5,6 +5,7 @@ import axios from 'axios';
 
 import { RouterProps, Transaction } from '../../types';
 import { WEBAPI } from '../../variables';
+import { dateFormat } from '../../utils/date';
 import { ReactComponent as LeftIcon } from '../../assets/left.svg';
 import { ReactComponent as LoaderIcon } from '../../assets/loader.svg';
 import './Dashboard.css';
@@ -110,7 +111,7 @@ class SalesRecordTransactionPage extends React.Component<RouterProps, SalesRecor
               <React.Fragment>
                 <div className="text-center mb-2">Transaction ID: { tx.code }</div>
                 <div className="mb-2">Ordered by: { tx.user.name }</div>
-                <div className="mb-2">Transaction Date: { tx.date }</div>
+                <div className="mb-2">Transaction Date: { dateFormat(tx.date) }</div>
               </React.Fragment>
             }
 

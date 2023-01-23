@@ -5,6 +5,7 @@ import axios from 'axios';
 
 import { RouterProps, Transaction } from '../types';
 import { WEBAPI, WEBURL } from '../variables';
+import { dateFormat } from '../utils/date';
 import { ReactComponent as LeftIcon } from '../assets/left.svg';
 import { ReactComponent as LoaderIcon } from '../assets/loader.svg';
 import './Transaction.css';
@@ -109,7 +110,7 @@ class HistoryPage extends React.Component<RouterProps, HistoryPageState> {
           
           <div className="text-center mt-2">
             <div>Order { items[0].paymentoption === 'pickup' ? 'Picked up' : 'Received' }</div>
-            <div>{ items[0].date }</div>
+            <div>{ dateFormat(items[0].date) }</div>
           </div>
         </div>
       );
