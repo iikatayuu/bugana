@@ -47,13 +47,15 @@ class HomePage extends React.Component<RouterProps, HomePageState> {
     this.submitSearch = this.submitSearch.bind(this);
   }
 
-  async getProducts (reset: boolean = true, category: Category | "all" = 'all') {
+  async getProducts (reset: boolean = true, category: Category | "all" = 'all', currentPage: number = 1) {
     this.setState({
+      productsPage: reset ? currentPage : this.state.productsPage,
+      category: reset ? category : this.state.category,
       productsLoading: true,
       products: reset ? [] as Product[] : this.state.products
     });
 
-    const page = reset ? this.state.productsPage : this.state.productsPage + 1;
+    const page = reset ? currentPage : this.state.productsPage + 1;
     try {
       const params = new URLSearchParams();
       params.set('page', page.toString());
@@ -116,12 +118,7 @@ class HomePage extends React.Component<RouterProps, HomePageState> {
 
   async changeProductsCategory (event: IonSelectCustomEvent<SelectChangeEventDetail<any>>) {
     const value = event.detail.value;
-    this.setState({
-      productsPage: 1,
-      category: value
-    });
-
-    await this.getProducts(true, value);
+    await this.getProducts(true, value, 1);
   }
 
   handleChange (event: React.ChangeEvent) {
