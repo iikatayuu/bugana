@@ -188,7 +188,7 @@ class ProfilePage extends React.Component<ProfilePageProps, ProfilePageState> {
           </div>
 
           <div className="profile-group mt-2">
-            <button type="button" className="profile-data text-left" onClick={this.requestDeletion}>REQUEST ACCOUNT DELETION</button>
+            <button type="button" className="profile-data text-left" onClick={this.requestDeletion}>DELETE MY ACCOUNT</button>
           </div>
 
           <IonAlert isOpen={this.state.changing} backdropDismiss={false} message="Updating profile picture..." />
