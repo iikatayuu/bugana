@@ -112,7 +112,7 @@ class RegistrationPage extends React.Component<RouterProps, RegistrationPageStat
               </div>
 
               <div className="form-group mb-2">
-                <input type="text" name="mobile" placeholder="Mobile number" className="form-control form-control-shadow" required />
+                <input type="text" name="mobile" placeholder="09123456789" className="form-control form-control-shadow" required />
               </div>
 
               <p className="text-md text-bold mb-1">Address</p>
