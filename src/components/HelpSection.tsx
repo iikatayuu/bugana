@@ -51,7 +51,7 @@ class HelpSection extends React.Component<HelpSectionProps, HelpSectionState> {
     for (let i = 0; i < this.props.qna.length; i++) {
       const qna = this.props.qna[i];
       questions.push(
-        <div className="card card-rect card-shadow mt-4 mb-2 mx-2" onClick={this.answer(qna.answer)}>
+        <div className="card card-rect card-shadow mt-4 mb-2 mx-2" onClick={this.answer(qna.answer)} key={i}>
           { qna.question }
         </div>
       );
