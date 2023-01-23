@@ -176,8 +176,8 @@ class ProfilePage extends React.Component<ProfilePageProps, ProfilePageState> {
           </div>
 
           <div className="profile-group mt-2 mb-5">
-            <h5 className="profile-data profile-data-readonly">EMAIL (not editable): { profile.email }</h5>
-            <h5 className="profile-data profile-data-readonly">CONTACT NUMBER (not editable): { profile.mobile }</h5>
+            <Link to={'/profile/edit?name=Email&key=email&value=' + encodeURIComponent(profile.email)} className="profile-data">EMAIL: { profile.email }</Link>
+            <Link to={'/profile/edit?name=Contact%20Number&key=mobile&value=' + encodeURIComponent(profile.mobile)} className="profile-data">CONTACT NUMBER: { profile.mobile }</Link>
             <Link to="/profile/edit?name=Password&key=password" className="profile-data">CHANGE PASSWORD</Link>
           </div>
 
