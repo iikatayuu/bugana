@@ -93,9 +93,8 @@ class ProfileEditPage extends React.Component<RouterProps, ProfileEditPageState>
     if (this.key === 'gender') {
       input = (
         <IonSelect value={this.state.value} interface="popover" onIonChange={this.changeSelectValue} className="form-control py-3">
-          <IonSelectOption value="male">Male</IonSelectOption>
-          <IonSelectOption value="female">Female</IonSelectOption>
-          <IonSelectOption value="others">Others</IonSelectOption>
+          <IonSelectOption value="Male">Male</IonSelectOption>
+          <IonSelectOption value="Female">Female</IonSelectOption>
         </IonSelect>
       );
     }
