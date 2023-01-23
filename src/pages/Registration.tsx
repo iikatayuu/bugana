@@ -64,7 +64,7 @@ class RegistrationPage extends React.Component<RouterProps, RegistrationPageStat
         target.reset();
         this.modal('Successfully registered', () => {
           this.props.history.push('/');
-        }, true);
+        }, true)();
       } else {
         this.setState({ message: response.data.message });
       }
