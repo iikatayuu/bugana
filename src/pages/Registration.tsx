@@ -96,7 +96,7 @@ class RegistrationPage extends React.Component<RouterProps, RegistrationPageStat
               </div>
 
               <div className="form-group mb-1">
-                <input type="text" name="birthday" placeholder="Birthday (YYYY-MM-DD)" className="form-control form-control-shadow" required />
+                <input type="date" name="birthday" placeholder="Birthday (YYYY-MM-DD)" className="form-control form-control-shadow" required />
               </div>
 
               <div className="form-group mb-1">

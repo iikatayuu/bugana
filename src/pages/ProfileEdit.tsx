@@ -87,7 +87,9 @@ class ProfileEditPage extends React.Component<RouterProps, ProfileEditPageState>
   }
 
   render () {
-    const inputType = this.key === 'password' ? 'password' : 'text'
+    let inputType: string = 'text';
+    if (this.key === 'password') inputType = 'password';
+    if (this.key === 'birthday') inputType = 'date';
     let input = <input type={inputType} value={this.state.value} className="form-control py-3" onChange={this.changeValue} />;
 
     if (this.key === 'gender') {
