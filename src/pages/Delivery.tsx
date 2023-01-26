@@ -38,7 +38,7 @@ class DeliveryPage extends React.Component<RouterProps, DeliveryPageState> {
     return async (event: React.MouseEvent) => {
       const transactions = this.state.transactions;
       const transaction = transactions[index][0];
-      if (transaction.status === 'success') return;
+      if (transaction.status !== 'approved') return;
 
       const code = transaction.code;
       await axios.post(`${WEBAPI}/transaction/receive.php`, { token, code });
