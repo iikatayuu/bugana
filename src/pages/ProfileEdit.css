@@ -14,3 +14,8 @@
 .edit-input-container {
   padding: 24px 0;
 }
+
+.edit-form-group-label {
+  background-color: var(--ion-color-secondary);
+  color: var(--ion-color-secondary-contrast);
+}

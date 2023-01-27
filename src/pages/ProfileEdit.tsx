@@ -7,12 +7,17 @@ import axios from 'axios';
 import { RouterProps } from '../types';
 import { WEBAPI } from '../variables';
 import { ReactComponent as LeftIcon } from '../assets/left.svg';
+import { ReactComponent as ModalXIcon } from '../assets/modal-x.svg';
 import './ProfileEdit.css';
 
 interface ProfileEditPageState {
   value: string;
+  confirmValue: string;
   saving: boolean;
   message: string;
+  openDarkModal: boolean;
+  darkModalMessage: string;
+  darkModalIcon: string;
 }
 
 class ProfileEditPage extends React.Component<RouterProps, ProfileEditPageState> {
@@ -29,13 +34,18 @@ class ProfileEditPage extends React.Component<RouterProps, ProfileEditPageState>
 
     this.state = {
       value: value !== null ? value : '',
+      confirmValue: '',
       saving: false,
-      message: ''
+      message: '',
+      openDarkModal: false,
+      darkModalMessage: '',
+      darkModalIcon: ''
     };
 
     this.key = key !== null ? key : '';
     this.editName = name !== null ? name : '';
     this.changeValue = this.changeValue.bind(this);
+    this.changeConfirmValue = this.changeConfirmValue.bind(this);
     this.changeSelectValue = this.changeSelectValue.bind(this);
     this.submit = this.submit.bind(this);
   }
@@ -45,9 +55,30 @@ class ProfileEditPage extends React.Component<RouterProps, ProfileEditPageState>
     this.setState({ value: input.value });
   }
 
+  changeConfirmValue (event: React.ChangeEvent) {
+    const input = event.target as HTMLInputElement;
+    this.setState({ confirmValue: input.value });
+  }
+
   changeSelectValue (event: IonSelectCustomEvent<SelectChangeEventDetail<any>>) {
     const detail = event.detail;
     this.setState({ value: detail.value });
+  }
+
+  modal (message: string, icon: string = '', show: boolean = true) {
+    return (event?: React.MouseEvent) => {
+      this.setState({
+        darkModalMessage: message,
+        darkModalIcon: icon,
+        openDarkModal: show
+      });
+
+      if (show) {
+        setTimeout(() => {
+          this.setState({ openDarkModal: false });
+        }, 5000);
+      }
+    }
   }
 
   async submit (event: React.MouseEvent) {
@@ -61,6 +92,14 @@ class ProfileEditPage extends React.Component<RouterProps, ProfileEditPageState>
     });
 
     try {
+      if (this.key === 'password') {
+        if (this.state.value !== this.state.confirmValue) {
+          this.setState({ saving: false });
+          this.modal('Password incorrect!', 'x', true)();
+          return;
+        }
+      }
+
       const response = await axios.post(`${WEBAPI}/edit.php`, {
         key: this.key,
         value: this.state.value,
@@ -88,9 +127,24 @@ class ProfileEditPage extends React.Component<RouterProps, ProfileEditPageState>
 
   render () {
     let inputType: string = 'text';
-    if (this.key === 'password') inputType = 'password';
     if (this.key === 'birthday') inputType = 'date';
-    let input = <input type={inputType} value={this.state.value} className="form-control py-3" onChange={this.changeValue} />;
+    let input = <input type={inputType} value={this.state.value} className="form-control py-2" onChange={this.changeValue} />;
+
+    if (this.key === 'password') {
+      input = (
+        <React.Fragment>
+          <div className="edit-form-group mb-5">
+            <label className="edit-form-group-label py-1 px-2 text-md">New Password:</label>
+            <input type="password" value={this.state.value} className="form-control mt-1 py-2" onChange={this.changeValue} />
+          </div>
+
+          <div className="edit-form-group">
+            <label className="edit-form-group-label py-1 px-2 text-md">Confirm New Password:</label>
+            <input type="password" value={this.state.confirmValue} className="form-control mt-1 py-2" onChange={this.changeConfirmValue} />
+          </div>
+        </React.Fragment>
+      );
+    }
 
     if (this.key === 'gender') {
       input = (
@@ -156,6 +210,18 @@ class ProfileEditPage extends React.Component<RouterProps, ProfileEditPageState>
           </main>
 
           <IonAlert isOpen={this.state.saving} backdropDismiss={false} message="Saving profile..." />
+
+          {
+            this.state.openDarkModal && <React.Fragment>
+              <div className="dark-modal-backdrop" onClick={this.modal('', '', false)}></div>
+              <div className="dark-modal-wrapper" onClick={this.modal('', '', false)}>
+                <div className="dark-modal d-flex flex-column align-items-center text-center">
+                  { this.state.darkModalIcon === 'x' && <ModalXIcon width={32} height={32} className="mb-1" /> }
+                  { this.state.darkModalMessage }
+                </div>
+              </div>
+            </React.Fragment>
+          }
         </IonContent>
       </IonPage>
     );
