@@ -81,7 +81,7 @@ class LoginPage extends React.Component<RouterProps, LoginPageState> {
 
             <div className="card text-center">
               <h6 className="login-title mb-1">BUGANA</h6>
-              <p className="login-subtitle mb-2">Please Enter User Credentials</p>
+              <p className="login-subtitle mb-2">Please Enter { this.state.type === 'customer' ? 'Customer' : 'Farmer' } Credentials</p>
               <input type="hidden" name="type" value={this.state.type} />
 
               <div className="form-group mb-1">
