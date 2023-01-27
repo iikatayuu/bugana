@@ -177,18 +177,15 @@ class ProfilePage extends React.Component<ProfilePageProps, ProfilePageState> {
 
           <div className="profile-group mt-2 mb-5">
             <Link to={'/profile/edit?name=Email&key=email&value=' + encodeURIComponent(profile.email)} className="profile-data">EMAIL: { profile.email }</Link>
-            <Link to={'/profile/edit?name=Contact%20Number&key=mobile&value=' + encodeURIComponent(profile.mobile)} className="profile-data">CONTACT NUMBER: { profile.mobile }</Link>
-            <Link to="/profile/edit?name=Password&key=password" className="profile-data">CHANGE PASSWORD</Link>
+            <Link to={'/profile/edit?name=Contact%20Number&key=mobile&value=' + encodeURIComponent(profile.mobile)} className="profile-data mb-3">CONTACT NUMBER: { profile.mobile }</Link>
+            <Link to="/profile/edit?name=Password&key=password" className="profile-data-btn btn btn-secondary btn-sm ml-1">CHANGE PASSWORD</Link>
           </div>
 
-          <div className="profile-group mt-2 mb-5">
+          <div className="profile-group mt-2 mb-3">
             <Link to={'/profile/edit?name=Address%20Barangay&key=addressbrgy&value=' + encodeURIComponent(profile.addressbrgy)} className="profile-data">BARANGAY: { profile.addressbrgy }</Link>
             <Link to={'/profile/edit?name=Address%20Purok&key=addresspurok&value=' + encodeURIComponent(profile.addresspurok)} className="profile-data">PUROK: { profile.addresspurok }</Link>
-            <Link to={'/profile/edit?name=Purok%2FStreet&key=addressstreet&value=' + encodeURIComponent(profile.addressstreet)} className="profile-data">STREET: { profile.addressstreet }</Link>
-          </div>
-
-          <div className="profile-group mt-2">
-            <button type="button" className="profile-data text-left" onClick={this.requestDeletion}>DELETE MY ACCOUNT</button>
+            <Link to={'/profile/edit?name=Purok%2FStreet&key=addressstreet&value=' + encodeURIComponent(profile.addressstreet)} className="profile-data mb-4">STREET: { profile.addressstreet }</Link>
+            <button type="button" className="profile-data-btn btn btn-secondary btn-sm ml-1 mb-2" onClick={this.requestDeletion}>DELETE MY ACCOUNT</button>
           </div>
 
           <IonAlert isOpen={this.state.changing} backdropDismiss={false} message="Updating profile picture..." />

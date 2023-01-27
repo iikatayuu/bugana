@@ -26,6 +26,10 @@
   cursor: pointer;
 }
 
+.profile-data-btn {
+  border-radius: 8px;
+}
+
 .profile-data-readonly {
   color: #AEA8A8;
   cursor: not-allowed;
