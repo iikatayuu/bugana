@@ -255,10 +255,12 @@ class ProductPage extends React.Component<RouterProps, ProductPageState> {
                   }
                 </div>
 
-                <div className="mx-3">
+                <div className="card card-rect card-shadow text-center mx-2">
                   <h5 className="product-title mb-2">{ product.name }</h5>
-                  <p className="product-price mb-2">PHP: { product.price }</p>
-                  <p className="product-quantity">{ product.currentStocks } LEFT</p>
+                  <p className="product-description mb-2">"{ product.description }"</p>
+                  <p className="product-price my-4 mb-2">PHP: { product.price }/kg</p>
+
+                  <p className="text-sm mt-3 mb-2"><span className="text-primary-old">Note:</span> A total minimum of 150PHP is required for each order</p>
                 </div>
 
                 <div className="card card-rect card-shadow mt-4 mx-2">
@@ -266,8 +268,8 @@ class ProductPage extends React.Component<RouterProps, ProductPageState> {
                     <img src={WEBURL + '/api/profileimg.php?id=' + farmer.id} alt={farmer.name + ' Image'} width={50} height={50} />
 
                     <div className="ml-3">
-                      <div className="product-farmer-name">{ farmer.name }</div>
-                      <strong className="product-farmer-address">{ farmer.addressstreet + ', ' + farmer.addresspurok + ', ' + farmer.addressbrgy }</strong>
+                      <div className="product-farmer-name">Farmer's Name: { farmer.name }</div>
+                      <strong className="product-farmer-address">Address: { farmer.addressstreet + ', ' + farmer.addresspurok + ', ' + farmer.addressbrgy }</strong>
                     </div>
                   </div>
 
@@ -275,6 +277,11 @@ class ProductPage extends React.Component<RouterProps, ProductPageState> {
                     <div>
                       <div className="product-stats-value text-center">{ farmer.products }</div>
                       <div className="product-stats-name">PRODUCTS</div>
+                    </div>
+
+                    <div>
+                      <div className="product-stats-value text-center">{ product.currentStocks } kg</div>
+                      <div className="product-stats-name">Available Stock</div>
                     </div>
 
                     <div>
