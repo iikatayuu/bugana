@@ -69,7 +69,7 @@ class CheckoutPage extends React.Component<RouterProps, CheckoutPageState> {
       }
     }
 
-    if (total <= 150) {
+    if (total < 150) {
       this.modal('Cannot proceed minimum order is limit to 150 pesos', 'x', true)();
     } else {
       this.setState({ confirm: true });
