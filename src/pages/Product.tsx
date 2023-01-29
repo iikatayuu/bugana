@@ -312,7 +312,7 @@ class ProductPage extends React.Component<RouterProps, ProductPageState> {
                 </div>
               </div>
 
-              <button type="submit" className="btn btn-primary btn-xl btn-round text-align mt-4" disabled={this.state.addingCart}>
+              <button type="submit" className="btn btn-secondary btn-xl btn-round text-align mt-4" disabled={this.state.addingCart}>
                 { this.state.addingCart ? 'Adding to cart...' : 'Add to Cart' }
               </button>
             </form>
@@ -330,7 +330,7 @@ class ProductPage extends React.Component<RouterProps, ProductPageState> {
                 </div>
               </div>
 
-              <button type="submit" className="btn btn-primary btn-xl btn-round text-align mt-4" disabled={this.state.checkingOut}>
+              <button type="submit" className="btn btn-secondary btn-xl btn-round text-align mt-4" disabled={this.state.checkingOut}>
                 { this.state.checkingOut ? 'Checking out...' : 'Checkout' }
               </button>
             </form>

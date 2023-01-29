@@ -126,7 +126,7 @@ class PickupPage extends React.Component<RouterProps, PickupPageState> {
                     </div>
                     <div className="transaction-details flex-1">
                       <div className="mb-1">Quantity: { transaction.quantity }</div>
-                      <div className="mb-1">Amount: { (parseFloat(transaction.amount) / parseInt(transaction.quantity)).toFixed(2) }</div>
+                      <div className="mb-1">Amount: ₱{ (parseFloat(transaction.amount) / parseInt(transaction.quantity)).toFixed(2) }</div>
                     </div>
                   </div>
                 </React.Fragment>
@@ -137,7 +137,7 @@ class PickupPage extends React.Component<RouterProps, PickupPageState> {
           <div className="d-flex">
             <div className="transaction-img"></div>
             <div>
-              <div className="mb-1">Total Amount: { total }</div>
+              <div className="mb-1">Total Amount: ₱{ total }</div>
               <button type="button" className="picked-up" onClick={this.receive(i)}>{ items[0].status === 'success' ? 'Order Picked Up' : 'To Pick Up' }</button>
             </div>
           </div>

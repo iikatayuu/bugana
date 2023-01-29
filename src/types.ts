@@ -13,7 +13,8 @@ export interface TokenPayload {
 }
 
 export interface Profile {
-  id: string,
+  id: string;
+  code: string;
   username: string;
   email: string;
   mobile: string;

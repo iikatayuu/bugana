@@ -128,7 +128,7 @@ class HistoryRecordPage extends React.Component<RouterProps, HistoryRecordPageSt
               </div>
               <div className="d-flex justify-space-around align-items-center text-bold text-dark">
                 <span>TOTAL INCOME:</span>
-                <div className="card card-primary card-rect">{ this.state.display === 'current' ? this.state.currentMonthIncome : this.state.lastMonthIncome }</div>
+                <div className="card card-primary card-rect">{ this.state.display === 'current' ? this.state.currentMonthIncome : this.state.lastMonthIncome } PHP</div>
               </div>
             </div>
           </main>

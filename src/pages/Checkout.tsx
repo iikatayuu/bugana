@@ -264,17 +264,17 @@ class CheckoutPage extends React.Component<RouterProps, CheckoutPageState> {
                     <div className="checkout-text text-bold mt-1">
                       <div className="d-flex mt-2 mr-3">
                         <div className="flex-1">Product Total:</div>
-                        <div>{ total.toFixed(2) }</div>
+                        <div>₱ { (this.state.payment === 'delivery' ? total - this.state.shipping : total).toFixed(2) }</div>
                       </div>
                       { this.state.payment === 'delivery' &&
                         <div className="d-flex mt-2 mr-3">
                           <div className="flex-1">Shipping Subtotal:</div>
-                          <div>{ this.state.shipping.toFixed(2) }</div>
+                          <div>₱ { this.state.shipping.toFixed(2) }</div>
                         </div>
                       }
                       <div className="d-flex text-lg mt-2 mr-3">
                         <div className="flex-1">Total Payment:</div>
-                        <div className="text-primary-old">{ total.toFixed(2) }</div>
+                        <div className="text-primary-old">₱ { total.toFixed(2) }</div>
                       </div>
                     </div>
                   </div>
@@ -285,7 +285,7 @@ class CheckoutPage extends React.Component<RouterProps, CheckoutPageState> {
 
           <footer className="checkout-actions">
             <div className="flex-1">Total Payment: <span className="text-primary-old text-bold ml-2">{ total.toFixed(2) }</span></div>
-            <button type="button" className="checkout-btn btn btn-primary" onClick={this.openModal}>Confirm</button>
+            <button type="button" className="checkout-btn btn btn-secondary" onClick={this.openModal}>Confirm</button>
           </footer>
 
           <IonModal id="modal-confirm" isOpen={this.state.confirm} onDidDismiss={() => this.setState({ confirm: false })}>

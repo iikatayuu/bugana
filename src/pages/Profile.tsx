@@ -160,7 +160,7 @@ class ProfilePage extends React.Component<ProfilePageProps, ProfilePageState> {
       profileNode = (
         <React.Fragment>
           <div className="user-container">
-            <img src={WEBAPI + '/profileimg.php?id=' + payload.userid + '&t=' + this.state.timestamp} alt={ payload.username + ' Profile Picture' } width={160} />
+            <img src={WEBAPI + '/profileimg.php?id=' + payload.userid + '&t=' + this.state.timestamp} alt={ payload.username + ' Profile Picture' } width={160} className="profile-pp" />
             <input type="file" id="profile-pp-update" onChange={this.changePp} className="d-none" />
             <label htmlFor="profile-pp-update" className="profile-pp-update mt-3 text-center">TAP TO CHANGE</label>
             {
@@ -169,6 +169,7 @@ class ProfilePage extends React.Component<ProfilePageProps, ProfilePageState> {
             }
           </div>
 
+          <div className="profile-code mt-2">#{ profile.code }</div>
           <div className="profile-group mt-2 mb-5">
             <Link to={'/profile/edit?name=Name&key=name&value=' + encodeURIComponent(profile.name)} className="profile-data">NAME: { profile.name }</Link>
             <Link to={'/profile/edit?name=Gender&key=gender&value=' + profile.gender} className="profile-data">GENDER: { profile.gender }</Link>

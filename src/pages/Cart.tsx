@@ -170,7 +170,7 @@ class CartPage extends React.Component<CartPageProps, CartPageState> {
               <img src={WEBURL + product.photos[0]} alt={product.name + ' Image'} width={75} height={75} className="mr-3" />
               <div className="cart-item-info">
                 <Link to={`/product/${product.id}`} className="cart-item-title">{ product.name }</Link>
-                <div className="text-primary-old text-sm mt-2">Price: { product.price }</div>
+                <div className="text-primary-old text-sm mt-2">Price: ₱ { parseFloat(product.price).toFixed(2) }/kg</div>
                 <div className="cart-item-quantity mt-1">
                   <button type="button" onClick={this.updateQuantity('-', i)}>-</button>
                   <div className="text-center">{ item.quantity }</div>
@@ -203,7 +203,7 @@ class CartPage extends React.Component<CartPageProps, CartPageState> {
               <label htmlFor="cart-all">All</label>
             </div>
             <div className="mr-3">Total: <span className="text-danger text-bold">{ total.toFixed(2) }</span></div>
-            <button type="button" className="cart-btn btn btn-primary" onClick={this.checkout}>Check Out</button>
+            <button type="button" className="cart-btn btn btn-secondary" onClick={this.checkout}>Check Out</button>
           </footer>
         </IonContent>
       </IonPage>
