@@ -55,7 +55,7 @@
   margin: 8px 0;
   margin-left: calc((100vw - 270px) / 4);
   margin-right: auto;
-  background-color: var(--ion-color-tertiary);
+  background-color: var(--ion-color-primary);
   text-decoration: none;
 }
 
