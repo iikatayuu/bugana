@@ -60,7 +60,7 @@ class DeliveryPage extends React.Component<RouterProps, DeliveryPageState> {
     }
 
     try {
-      const response = await axios.get(`${WEBAPI}/transaction/list.php?type=delivery&token=${token}`);
+      const response = await axios.get(`${WEBAPI}/transaction/list.php?type=delivery&token=${token}&pending`);
       if (response.data.success) {
         const transactions: Transaction[] = response.data.transactions;
         const grouped: Transaction[][] = [];

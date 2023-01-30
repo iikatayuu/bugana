@@ -60,7 +60,7 @@ class PickupPage extends React.Component<RouterProps, PickupPageState> {
     }
 
     try {
-      const response = await axios.get(`${WEBAPI}/transaction/list.php?type=pickup&token=${token}`);
+      const response = await axios.get(`${WEBAPI}/transaction/list.php?type=pickup&token=${token}&pending`);
       if (response.data.success) {
         const transactions: Transaction[] = response.data.transactions;
         const grouped: Transaction[][] = [];
