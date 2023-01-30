@@ -166,7 +166,7 @@ class HomePage extends React.Component<RouterProps, HomePageState> {
         <Link to={'/product/' + product.id} className="home-product p-1" key={i}>
           <img src={WEBURL + product.photos[0]} alt={product.name + ' Image'} width={135} height={100} />
           <div className="home-product-name">{ product.name }</div>
-          <span className="home-product-price mt-2">{ product.price }</span>
+          <span className="home-product-price mt-2">₱{ product.price }/kg</span>
         </Link>
       );
     }
