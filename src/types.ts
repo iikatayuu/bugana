@@ -92,6 +92,7 @@ export interface Transaction {
   product: {
     id: string;
     name: string;
+    description: string;
     user: string;
     price: string;
     photos: string[];

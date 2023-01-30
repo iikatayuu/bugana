@@ -368,6 +368,7 @@ ion-select.form-control {
 .flex-1 { flex: 1; }
 .justify-space-around { justify-content: space-around; }
 .justify-space-between { justify-content: space-between; }
+.justify-content-center { justify-content: center; }
 .align-items-center { align-items: center; }
 .align-items-end { align-items: flex-end; }
 

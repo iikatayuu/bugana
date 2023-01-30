@@ -7,12 +7,17 @@ import { RouterProps, Transaction } from '../types';
 import { WEBAPI, WEBURL } from '../variables';
 import { ReactComponent as LeftIcon } from '../assets/left.svg';
 import { ReactComponent as LoaderIcon } from '../assets/loader.svg';
+import { ReactComponent as ModalCheckIcon } from '../assets/modal-check.svg';
+import { ReactComponent as ModalXIcon } from '../assets/modal-x.svg';
 import './Transaction.css';
 
 interface PickupPageState {
   transactions: Transaction[][];
   loading: boolean;
   error: string;
+  openDarkModal: boolean;
+  darkModalMessage: string;
+  darkModalIcon: string;
 }
 
 class PickupPage extends React.Component<RouterProps, PickupPageState> {
@@ -22,7 +27,10 @@ class PickupPage extends React.Component<RouterProps, PickupPageState> {
     this.state = {
       transactions: [],
       loading: true,
-      error: ''
+      error: '',
+      openDarkModal: false,
+      darkModalMessage: '',
+      darkModalIcon: ''
     };
 
     this.receive = this.receive.bind(this);
@@ -49,6 +57,23 @@ class PickupPage extends React.Component<RouterProps, PickupPageState> {
       });
 
       this.setState({ transactions });
+      this.modal('Order has been picked up', 'check', true)();
+    }
+  }
+
+  modal (message: string, icon: string = '', show: boolean = true) {
+    return (event?: React.MouseEvent) => {
+      this.setState({
+        darkModalMessage: message,
+        darkModalIcon: icon,
+        openDarkModal: show
+      });
+
+      if (show) {
+        setTimeout(() => {
+          this.setState({ openDarkModal: false });
+        }, 5000);
+      }
     }
   }
 
@@ -93,40 +118,44 @@ class PickupPage extends React.Component<RouterProps, PickupPageState> {
     const transactions: React.ReactNode[] = [];
     for (let i = 0; i < this.state.transactions.length; i++) {
       const items = this.state.transactions[i];
-      const sellers: string[] = [];
       const total = items.reduce((prev, curr) => {
         prev += parseFloat(curr.amount);
         return prev;
       }, 0);
+      const status = items[0].status;
+      if (status === 'success' || status === 'rejected') continue;
 
       transactions.push(
-        <div className="transaction card card-tertiary card-rect m-2 text-bold" key={i}>
+        <div className="transaction card card-rect d-flex flex-column align-items-center m-2" key={i}>
           {
             items.map((transaction, itemI) => {
               const product = transaction.product;
               const user = transaction.user;
-              let seller: React.ReactNode = '';
-              if (!sellers.includes(user.id)) {
-                sellers.push(user.id);
-                seller = (
-                  <React.Fragment>
-                    <div className="text-md mt-2">{ user.name }</div>
-                    <div className="mb-1">{ user.addressstreet + ', ' + user.addresspurok + ', ' + user.addressbrgy }</div>
-                  </React.Fragment>
-                );
-              }
 
               return (
                 <React.Fragment key={itemI}>
-                  { seller }
-                  <div className="d-flex mb-1">
-                    <div className="text-center">
-                      <img src={WEBURL + transaction.product.photos[0]} alt={product.name + ' Image'} width={135} height={100} className="mr-2" />
-                      <div>{ product.name }</div>
+                  <h6 className="transaction-product-title text-center text-bold mb-1">{ product.name }</h6>
+                  <img src={WEBURL + transaction.product.photos[0]} alt={product.name + ' Image'} width={135} height={135} className="mx-auto" />
+                  <p className="transaction-product-description text-center my-2">"{ product.description }"</p>
+
+                  <div>
+                    <div className="mb-1">
+                      <span className="text-bold">Farmers Name:</span> { user.name }
                     </div>
-                    <div className="transaction-details flex-1">
-                      <div className="mb-1">Quantity: { transaction.quantity } KG</div>
-                      <div className="mb-1">Amount: ₱{ (parseFloat(transaction.amount) / parseInt(transaction.quantity)).toFixed(2) }</div>
+                    <div className="mb-1">
+                      <span className="text-bold">Address:</span> { user.addressstreet + ', ' + user.addresspurok + ', ' + user.addressbrgy }
+                    </div>
+                    <div className="mb-1">
+                      <span className="text-bold">Product:</span> { product.name }
+                    </div>
+                    <div className="mb-1">
+                      <span className="text-bold">Quantity:</span> { transaction.quantity } kg
+                    </div>
+                    <div className="mb-1">
+                      <span className="text-bold">Amount:</span> ₱{ transaction.amount }
+                    </div>
+                    <div className="mb-1">
+                      <span className="text-bold">Total Amount:</span> ₱{ total.toFixed(2) }
                     </div>
                   </div>
                 </React.Fragment>
@@ -134,13 +163,7 @@ class PickupPage extends React.Component<RouterProps, PickupPageState> {
             })
           }
 
-          <div className="d-flex">
-            <div className="transaction-img"></div>
-            <div>
-              <div className="mb-1">Total Amount: ₱{ total }</div>
-              <button type="button" className="picked-up" onClick={this.receive(i)}>{ items[0].status === 'success' ? 'Order Picked Up' : 'To Pick Up' }</button>
-            </div>
-          </div>
+          <button type="button" className="btn-received mt-2" onClick={this.receive(i)}>Order Picked Up</button>
         </div>
       );
     }
@@ -166,6 +189,19 @@ class PickupPage extends React.Component<RouterProps, PickupPageState> {
 
             { transactions }
           </main>
+
+          {
+            this.state.openDarkModal && <React.Fragment>
+              <div className="dark-modal-backdrop" onClick={this.modal('', '', false)}></div>
+              <div className="dark-modal-wrapper" onClick={this.modal('', '', false)}>
+                <div className="dark-modal d-flex flex-column align-items-center text-center">
+                  { this.state.darkModalIcon === 'check' && <ModalCheckIcon width={32} height={32} className="mb-1" /> }
+                  { this.state.darkModalIcon === 'x' && <ModalXIcon width={32} height={32} className="mb-1" /> }
+                  { this.state.darkModalMessage }
+                </div>
+              </div>
+            </React.Fragment>
+          }
         </IonContent>
       </IonPage>
     );

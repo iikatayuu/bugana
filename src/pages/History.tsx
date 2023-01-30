@@ -68,50 +68,57 @@ class HistoryPage extends React.Component<RouterProps, HistoryPageState> {
     const transactions: React.ReactNode[] = [];
     for (let i = 0; i < this.state.transactions.length; i++) {
       const items = this.state.transactions[i];
-      const sellers: string[] = [];
       const shipping = parseFloat(items[0].shipping);
+      const total = items.reduce((prev, curr) => {
+        prev += parseFloat(curr.amount);
+        return prev;
+      }, shipping);
+      let status = '';
 
       transactions.push(
-        <div className="transaction card card-tertiary card-rect m-2 text-bold" key={i}>
+        <div className="transaction card card-rect d-flex flex-column align-items-center m-2" key={i}>
           {
             items.map((transaction, itemI) => {
               const product = transaction.product;
               const user = transaction.user;
-              let seller: React.ReactNode = '';
-              if (!sellers.includes(user.id)) {
-                sellers.push(user.id);
-                seller = (
-                  <React.Fragment>
-                    <div className="text-md mt-2">{ user.name }</div>
-                    <div className="mb-1">{ user.addressstreet + ', ' + user.addresspurok + ', ' + user.addressbrgy }</div>
-                  </React.Fragment>
-                );
-              }
+              status = transaction.status;
 
               return (
                 <React.Fragment key={itemI}>
-                  { seller }
-                  <div className="d-flex mb-1">
-                    <div className="text-center">
-                      <img src={WEBURL + transaction.product.photos[0]} alt={product.name + ' Image'} width={135} height={100} className="mr-2" />
-                      <div>{ product.name }</div>
+                  <h6 className="transaction-product-title text-center text-bold mb-1">{ product.name }</h6>
+                  <img src={WEBURL + transaction.product.photos[0]} alt={product.name + ' Image'} width={135} height={135} className="mx-auto" />
+                  <p className="transaction-product-description text-center my-2">"{ product.description }"</p>
+
+                  <div>
+                    <div className="mb-1">
+                      <span className="text-bold">Farmers Name:</span> { user.name }
                     </div>
-                    <div className="transaction-details flex-1">
-                      <div className="mb-1">Quantity: { transaction.quantity } KG</div>
-                      <div className="mb-1">Amount: ₱{ (parseFloat(transaction.amount) / parseInt(transaction.quantity)).toFixed(2) }</div>
-                      { transaction.paymentoption === 'delivery' && <div className="mb-1">Shipping Fee: ₱{ shipping.toFixed(2) }</div> }
-                      <div className="mb-1">Total Amount: ₱{ (parseFloat(transaction.amount) + (transaction.paymentoption === 'delivery' ? shipping : 0)).toFixed(2) }</div>
+                    <div className="mb-1">
+                      <span className="text-bold">Address:</span> { user.addressstreet + ', ' + user.addresspurok + ', ' + user.addressbrgy }
+                    </div>
+                    <div className="mb-1">
+                      <span className="text-bold">Product:</span> { product.name }
+                    </div>
+                    <div className="mb-1">
+                      <span className="text-bold">Quantity:</span> { transaction.quantity } kg
+                    </div>
+                    <div className="mb-1">
+                      <span className="text-bold">Amount:</span> ₱{ transaction.amount }
+                    </div>
+                    <div className="mb-1">
+                      <span className="text-bold">Total Amount:</span> ₱{ total.toFixed(2) }
+                    </div>
+                    <div className="mb-1">
+                      <span className="text-bold">Transaction Completed:</span> { dateFormat(transaction.date) }
                     </div>
                   </div>
                 </React.Fragment>
               );
             })
           }
-          
-          <div className="text-center mt-2">
-            <div>Order { items[0].paymentoption === 'pickup' ? 'Picked up' : 'Received' }</div>
-            <div>{ dateFormat(items[0].date) }</div>
-          </div>
+
+          { status === 'success' && <button type="button" className="btn-received mt-2" disabled>Order { items[0].paymentoption === 'pickup' ? 'Picked up' : 'Received' }</button> }
+          { status === 'rejected' && <button type="button" className="btn-received btn-received-error mt-2" disabled>Violation, Did not Pick up or Received</button> }
         </div>
       );
     }

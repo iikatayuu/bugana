@@ -1,28 +1,31 @@
 
 .transaction {
+  background-color: #e6f6e7 !important;
   font-size: 12px;
 }
 
-.transaction-details {
-  display: flex;
-  flex-direction: column;
+.transaction-product-title {
+  font-size: 20px;
 }
 
-.transaction-img {
-  width: 147px;
+.transaction-product-description {
+  font-size: 16px;
 }
 
-.picked-up,
-.delivered {
-  align-self: flex-end;
+.btn-received {
+  background-color: #ed5958;
+  color: #fff;
+  border-radius: 4px;
   padding: 8px;
   font-size: 12px;
   font-weight: 700;
 }
 
-.picked-up { background-color: #fff; }
+.btn-received:disabled {
+  background-color: #aea8A8;
+}
 
-.delivered {
-  background-color: var(--ion-color-secondary-old);
-  color: #fff;
+.btn-received-error {
+  background-color: #aea8A8;
+  color: #d62035;
 }
