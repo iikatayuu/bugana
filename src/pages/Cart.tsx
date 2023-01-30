@@ -202,7 +202,7 @@ class CartPage extends React.Component<CartPageProps, CartPageState> {
             <div className="flex-1 ml-1">
               <label htmlFor="cart-all">All</label>
             </div>
-            <div className="mr-3">Total: <span className="text-danger text-bold">{ total.toFixed(2) }</span></div>
+            <div className="mr-3">Total: <span className="text-danger text-bold">₱{ total.toFixed(2) }</span></div>
             <button type="button" className="cart-btn btn btn-secondary" onClick={this.checkout}>Check Out</button>
           </footer>
         </IonContent>

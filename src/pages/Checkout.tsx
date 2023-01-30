@@ -186,8 +186,8 @@ class CheckoutPage extends React.Component<RouterProps, CheckoutPageState> {
               <img src={WEBURL + product.photos[0]} alt={product.name + ' Image'} width={100} height={100} className="checkout-item-img mr-3" />
               <div className="text-bold flex-1">
                 <div className="text-center text-md mb-3">{ product.name }</div>
-                <div className="checkout-text mb-3">Quantity: { item.quantity }</div>
-                <div className="checkout-text">Price: { price.toFixed(2) }</div>
+                <div className="checkout-text mb-3">Quantity: { item.quantity } KG</div>
+                <div className="checkout-text">Price: ₱{ price.toFixed(2) }</div>
               </div>
             </div>
           </div>
@@ -284,7 +284,7 @@ class CheckoutPage extends React.Component<RouterProps, CheckoutPageState> {
           </main>
 
           <footer className="checkout-actions">
-            <div className="flex-1">Total Payment: <span className="text-primary-old text-bold ml-2">{ total.toFixed(2) }</span></div>
+            <div className="flex-1">Total Payment: <span className="text-primary-old text-bold ml-2">₱{ total.toFixed(2) }</span></div>
             <button type="button" className="checkout-btn btn btn-secondary" onClick={this.openModal}>Confirm</button>
           </footer>
 
