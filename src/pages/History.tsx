@@ -97,7 +97,7 @@ class HistoryPage extends React.Component<RouterProps, HistoryPageState> {
                       <div>{ product.name }</div>
                     </div>
                     <div className="transaction-details flex-1">
-                      <div className="mb-1">Quantity: { transaction.quantity }</div>
+                      <div className="mb-1">Quantity: { transaction.quantity } KG</div>
                       <div className="mb-1">Amount: ₱{ (parseFloat(transaction.amount) / parseInt(transaction.quantity)).toFixed(2) }</div>
                       { transaction.paymentoption === 'delivery' && <div className="mb-1">Shipping Fee: ₱{ shipping.toFixed(2) }</div> }
                       <div className="mb-1">Total Amount: ₱{ (parseFloat(transaction.amount) + (transaction.paymentoption === 'delivery' ? shipping : 0)).toFixed(2) }</div>

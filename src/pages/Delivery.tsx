@@ -126,7 +126,7 @@ class DeliveryPage extends React.Component<RouterProps, DeliveryPageState> {
                       <div>{ product.name }</div>
                     </div>
                     <div className="transaction-details flex-1">
-                      <div className="mb-1">Quantity: { transaction.quantity }</div>
+                      <div className="mb-1">Quantity: { transaction.quantity } KG</div>
                       <div className="mb-1">Amount: ₱{ (parseFloat(transaction.amount) / parseInt(transaction.quantity)).toFixed(2) }</div>
                     </div>
                   </div>
