@@ -2,7 +2,6 @@
 import React from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { IonPage, IonContent, useIonActionSheet, UseIonActionSheetResult, useIonToast, UseIonToastResult, IonAlert } from '@ionic/react';
-import { OverlayEventDetail } from '@ionic/core';
 import axios from 'axios';
 
 import { Profile, RouterProps } from '../types';
@@ -38,55 +37,7 @@ class ProfilePage extends React.Component<ProfilePageProps, ProfilePageState> {
       profile: null
     };
 
-    this.requestDeletion = this.requestDeletion.bind(this);
     this.changePp = this.changePp.bind(this);
-  }
-
-  async requestDeletion (event: React.MouseEvent) {
-    event.preventDefault();
-
-    const token = localStorage.getItem('token');
-    if (token === null) return;
-
-    const props = this.props;
-    const actionSheet = props.actionSheet[0];
-    actionSheet({
-      header: 'Request account deletion?',
-      buttons: [
-        {
-          text: 'Delete account',
-          role: 'destructive',
-          data: { action: 'delete' }
-        },
-        {
-          text: 'Cancel',
-          role: 'cancel',
-          data: {}
-        }
-      ],
-      onDidDismiss: async function (event: CustomEvent<OverlayEventDetail<any>>) {
-        const detail = event.detail;
-        if (detail.data?.action === 'delete') {
-          let success = false;
-          try {
-            const response = await axios.post(`${WEBAPI}/delete.php?token=${token}`);
-            if (response.data.success) {
-              success = true;
-              props.history.push('/logout?type=customer');
-            }
-          } catch (error) {}
-
-          if (!success) {
-            const toast = props.toast[0];
-            toast({
-              message: 'Unable to request account deletion. Please try again later',
-              duration: 5000,
-              position: 'middle'
-            });
-          }
-        }
-      }
-    });
   }
 
   async changePp (event: React.ChangeEvent) {
@@ -186,7 +137,6 @@ class ProfilePage extends React.Component<ProfilePageProps, ProfilePageState> {
             <Link to={'/profile/edit?name=Address%20Barangay&key=addressbrgy&value=' + encodeURIComponent(profile.addressbrgy)} className="profile-data">BARANGAY: { profile.addressbrgy }</Link>
             <Link to={'/profile/edit?name=Address%20Purok&key=addresspurok&value=' + encodeURIComponent(profile.addresspurok)} className="profile-data">PUROK: { profile.addresspurok }</Link>
             <Link to={'/profile/edit?name=Purok%2FStreet&key=addressstreet&value=' + encodeURIComponent(profile.addressstreet)} className="profile-data mb-4">STREET: { profile.addressstreet }</Link>
-            <button type="button" className="profile-data-btn btn btn-secondary btn-sm ml-1 mb-2" onClick={this.requestDeletion}>DELETE MY ACCOUNT</button>
           </div>
 
           <IonAlert isOpen={this.state.changing} backdropDismiss={false} message="Updating profile picture..." />
