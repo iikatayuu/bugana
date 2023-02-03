@@ -151,7 +151,7 @@ class HomePage extends React.Component<RouterProps, HomePageState> {
       const product = this.state.topPicks[i];
       top.push(
         <Link to={'/product/' + product.id} className="home-product p-1 mx-2" key={i}>
-          <img src={WEBURL + product.photos[0]} alt={product.name + ' Image'} width={135} height={100} />
+          <img src={WEBURL + product.photos[0]} alt={product.name + ' Image'} width={164} height={120} />
           <div className="home-product-name">{ product.name }</div>
           <span className="home-product-price mt-2">₱{ product.price }/kg</span>
         </Link>

@@ -51,12 +51,18 @@
 }
 
 .home-product {
-  width: 135px;
-  margin: 8px 0;
-  margin-left: calc((100vw - 270px) / 4);
+  width: 164px;
+  margin: 4px 0;
+  margin-left: calc((100vw - 328px) / 4);
   margin-right: auto;
   background-color: var(--ion-color-primary);
   text-decoration: none;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, .25);
+}
+
+.home-product img {
+  width: 100%;
+  max-height: 120px;
 }
 
 .home-product-name,
