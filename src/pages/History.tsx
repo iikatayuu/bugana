@@ -6,6 +6,7 @@ import axios from 'axios';
 import { RouterProps, Transaction } from '../types';
 import { WEBAPI, WEBURL } from '../variables';
 import { dateFormat } from '../utils/date';
+import { ReactComponent as NoOrderIcon } from '../assets/no-order.svg';
 import { ReactComponent as LeftIcon } from '../assets/left.svg';
 import { ReactComponent as LoaderIcon } from '../assets/loader.svg';
 import './Transaction.css';
@@ -140,6 +141,15 @@ class HistoryPage extends React.Component<RouterProps, HistoryPageState> {
                 <LoaderIcon width={100} />
                 <span>Fetching data...</span>
               </div>
+            }
+
+            {
+              !this.state.loading && transactions.length === 0 && (
+                <div className="no-order-icon text-center">
+                  <NoOrderIcon className="mr-4" />
+                  <div className="text-bold mt-1">You have no orders yet...</div>
+                </div>
+              )
             }
 
             { transactions }

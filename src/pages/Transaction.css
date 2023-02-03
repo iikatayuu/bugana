@@ -29,3 +29,12 @@
   background-color: #aea8A8;
   color: #d62035;
 }
+
+.no-order-icon {
+  position: fixed;
+  top: calc(100vh / 2);
+  left: calc(100vw / 2);
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  width: 190px;
+}
