@@ -60,6 +60,7 @@ class HomePage extends React.Component<RouterProps, HomePageState> {
       const params = new URLSearchParams();
       params.set('page', page.toString());
       params.set('category', category);
+      params.set('exclude', '1')
       params.set('random', '1')
 
       const response = await axios.get(`${WEBAPI}/product/list.php?${params.toString()}`);
