@@ -71,6 +71,11 @@
   padding: 12px 24px !important;
 }
 
+.checkout-terms {
+  width: 100%;
+  white-space: pre-wrap;
+}
+
 .payment-option {
   margin-right: 16px;
   color: rgba(0, 0, 0, 0.6);

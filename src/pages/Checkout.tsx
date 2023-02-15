@@ -25,6 +25,7 @@ interface CheckoutPageState {
   loading: boolean;
   error: string;
   checkingOut: boolean;
+  terms: string;
   openDarkModal: boolean;
   darkModalMessage: string;
   darkModalIcon: string;
@@ -43,6 +44,7 @@ class CheckoutPage extends React.Component<RouterProps, CheckoutPageState> {
       loading: true,
       error: '',
       checkingOut: false,
+      terms: '',
       openDarkModal: false,
       darkModalMessage: '',
       darkModalIcon: ''
@@ -141,8 +143,9 @@ class CheckoutPage extends React.Component<RouterProps, CheckoutPageState> {
       if (response.data.success) {
         const profile = response.data.profile;
         const shippingFeeRes = await axios.get(`${WEBAPI}/shipping.php?brgy=${profile.addressbrgy}`);
+        const termsRes = await axios.get(`${WEBAPI}/getterms.php`);
 
-        this.setState({ profile, shipping: shippingFeeRes.data.fee });
+        this.setState({ profile, shipping: shippingFeeRes.data.fee, terms: termsRes.data.terms });
       } else {
         this.setState({ error: response.data.message });
       }
@@ -292,19 +295,8 @@ class CheckoutPage extends React.Component<RouterProps, CheckoutPageState> {
             <IonContent>
               <div className="modal-confirm-content m-3">
                 <div className="text-center text-bold mb-1">CONFIRM CHECKOUT</div>
-                <div className="modal-checkout card card-rect card-primary">
-                  Upon confirming this purchase, you are agreeing to the following terms:
-                  <ol>
-                    <li>1. Delivery hours is 12NN and 6PM</li>
-                    <li>2. Purchases are FINAL and CANNOT be CANCELED</li>
-                    <li>3. Your account will be:
-                      <ul>
-                        <li>FIRST OFFENSE - WARNING</li>
-                        <li>SECOND OFFENSE - BAN</li>
-                        <li>If purchases or transactions are NOT COMPLETED</li>
-                      </ul>
-                    </li>
-                  </ol>
+                <div className="checkout-terms modal-checkout card card-rect card-primary">
+                  { this.state.terms }
                 </div>
                 <div className="text-danger mt-2">{ this.state.error }</div>
                 <button type="button" className="btn btn-secondary-old btn-block btn-round w-50 mt-2" onClick={this.checkout} disabled={this.state.checkingOut}>
