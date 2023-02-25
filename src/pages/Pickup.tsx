@@ -164,7 +164,7 @@ class PickupPage extends React.Component<RouterProps, PickupPageState> {
             })
           }
 
-          <button type="button" className="btn-received mt-2" onClick={this.receive(i)}>Order Picked Up</button>
+          <button type="button" className="btn-received mt-2" disabled={status === 'pending'} onClick={this.receive(i)}>Order Picked Up</button>
         </div>
       );
     }

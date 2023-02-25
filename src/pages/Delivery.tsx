@@ -166,7 +166,7 @@ class DeliveryPage extends React.Component<RouterProps, DeliveryPageState> {
             })
           }
 
-          <button type="button" className="btn-received mt-2" onClick={this.receive(i)}>Order Received</button>
+          <button type="button" className="btn-received mt-2" disabled={status === 'pending'} onClick={this.receive(i)}>Order Received</button>
         </div>
       );
     }
